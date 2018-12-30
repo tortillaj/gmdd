@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Green Mountain Design & Development',
+    keywords: ['web development', 'web design', 'vermont', 'custom web development'],
+    description: 'Custom web design and development in the Green Mountains of Vermont',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

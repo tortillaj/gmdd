@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 
 import { theme } from '../theme'
-import { GlobalStyle, SiteHeader, SiteFooter, SiteMain } from '../03-organisms'
+import { GlobalStyle, Helmet, SiteHeader, SiteFooter, SiteMain } from '../03-organisms'
 import { Inset } from '../01-atoms'
 
 const Wrapper = styled.article`
@@ -19,7 +18,10 @@ export class FullPageLayout extends React.Component {
   static Header = SiteHeader
   static Main = SiteMain
   static Footer = SiteFooter
+
   render() {
+    const { title } = this.props
+
     return (
       <ThemeProvider theme={theme}>
         <Fragment>
@@ -31,21 +33,15 @@ export class FullPageLayout extends React.Component {
                 site {
                   siteMetadata {
                     title
+                    keywords
+                    description
                   }
                 }
               }
             `}
             render={data => (
               <Fragment>
-                <Helmet
-                  title={data.site.siteMetadata.title}
-                  meta={[
-                    { name: 'description', content: 'Sample' },
-                    { name: 'keywords', content: 'sample, something' },
-                  ]}
-                >
-                  <html lang="en" />
-                </Helmet>
+                <Helmet title={title} />
                 <Wrapper>
                   <SiteHeader>
                     <Inset>
