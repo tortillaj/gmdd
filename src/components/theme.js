@@ -51,13 +51,6 @@ const colors = {
   background: '#ffffff',
 }
 
-const spacing = {
-  small: '0.8rem',
-  medium: '1.2rem',
-  large: '2.4rem',
-  xl: '3.2rem',
-}
-
 const sizes = {
   // these sizes are used for breakpoints
   small: 600,
@@ -65,6 +58,24 @@ const sizes = {
   large: 1200,
   huge: 1500,
 }
+
+const typography = {
+  sans: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  fontSize: '1.5rem',
+  lineHeight: 1.33,
+  fontSizeSmall: '1.3rem',
+  fontSizeMini: '1.1rem',
+  a: {
+    color: colors.primary.base,
+    colorHover: colors.primary.interaction,
+  },
+}
+
+export const shevy = new Shevy({
+  baseFontSize: typography.fontSize,
+  baseFontScale: [4.209, 3.157, 2.369, 1.777, 1.333, 1],
+  baseLineHeight: typography.lineHeight,
+})
 
 export const theme = {
   colors,
@@ -75,28 +86,11 @@ export const theme = {
     background: hexToRGB(colors.background, 0.9),
   },
   sizes,
-  typography: {
-    sans: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    fontSize: '1.5rem',
-    lineHeight: 1.33,
-    fontSizeSmall: '1.3rem',
-    fontSizeMini: '1.1rem',
-    a: {
-      color: colors.primary.base,
-      colorHover: colors.primary.interaction,
-    },
-  },
+  typography,
   layout: {
-    siteWidth: '120rem',
-    spacing,
+    siteWidth: shevy.baseSpacing(60),
   },
 }
-
-export const shevy = new Shevy({
-  baseFontSize: '1.4rem',
-  baseFontScale: [4.209, 3.157, 2.369, 1.777, 1.333, 1],
-})
-console.log(shevy)
 
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`

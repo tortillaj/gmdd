@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
-import { themeValue } from '../theme'
+import { media, shevy } from '../theme'
 
 export const SiteMain = styled.main`
   flex: 1;
-  margin: ${themeValue('layout.spacing.medium')} 0;
-  @media all and (min-width: ${themeValue('sizes.large')}) {
-    margin: ${themeValue('layout.spacing.xl')} 0;
-  }
+  margin: ${shevy.baseSpacing(1)} 0;
+  
+  ${media.large`margin: ${shevy.baseSpacing(2)} 0;`}
 `
 SiteMain.displayName = 'SiteMain'

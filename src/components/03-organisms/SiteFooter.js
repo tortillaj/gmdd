@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
-import { themeValue } from '../theme'
+import { shevy } from '../theme'
 
 export const SiteFooter = styled.footer`
-  background-color: ${themeValue('colors.primary.interaction')};
-  height: 15vh;
+  background-color: black;
+  height: ${shevy.baseSpacing(10)};
+  padding: ${shevy.baseSpacing(0.5)} 0;
 `
 SiteFooter.displayName = 'SiteFooter'

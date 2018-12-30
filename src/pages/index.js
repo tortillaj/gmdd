@@ -1,16 +1,22 @@
 import React from 'react'
 
-import { FullPageLayout, H1, P } from '../components'
+import { FullPageLayout, H1, Inset, P } from '../components'
 
 const IndexPage = () => (
   <FullPageLayout>
-    <FullPageLayout.Header>Here is the header</FullPageLayout.Header>
+    <FullPageLayout.Header>
+      <Inset>Here is the header</Inset>
+    </FullPageLayout.Header>
     <FullPageLayout.Main>
-      <H1>Hi people</H1>
-      <P>Welcome to your new Gatsby site.</P>
-      <P>Now go build something great.</P>
+      <Inset>
+        <H1>Hi people</H1>
+        <P>Welcome to your new Gatsby site.</P>
+        <P>Now go build something great.</P>
+      </Inset>
     </FullPageLayout.Main>
-    <FullPageLayout.Footer>Here is the Footer</FullPageLayout.Footer>
+    <FullPageLayout.Footer>
+      <Inset>Here is the Footer</Inset>
+    </FullPageLayout.Footer>
   </FullPageLayout>
 )
 

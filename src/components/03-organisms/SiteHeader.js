@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
-import { themeValue } from '../theme'
+import { media, shevy } from '../theme'
 
 export const SiteHeader = styled.header`
   display: flex;
-  background-image: linear-gradient(${themeValue('colors.primary.interaction')}, ${themeValue('colors.primary.base')});
-  padding: ${themeValue('layout.spacing.medium')} 0;
+  background-color: black;
+  padding: ${shevy.baseSpacing(0.5)} 0;
+
+  ${media.large`padding: ${shevy.baseSpacing(1)} 0;`}
 `
 SiteHeader.displayName = 'SiteHeader'
