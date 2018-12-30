@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { media, shevy, themeValue } from '../theme'
+import { media, shevy, themeValue } from './theme'
 
 export const Inset = styled.div`
   max-width: ${themeValue('layout.siteWidth')};

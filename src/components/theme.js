@@ -47,7 +47,7 @@ const colors = {
     base: '#d00',
     interaction: '#a00',
   },
-  foreground: '#3d3d3d',
+  foreground: '#252525',
   background: '#ffffff',
 }
 
@@ -61,14 +61,9 @@ const sizes = {
 
 const typography = {
   sans: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  serif: 'Georgia, serif',
   fontSize: '1.5rem',
   lineHeight: 1.33,
-  fontSizeSmall: '1.3rem',
-  fontSizeMini: '1.1rem',
-  a: {
-    color: colors.primary.base,
-    colorHover: colors.primary.interaction,
-  },
 }
 
 export const shevy = new Shevy({

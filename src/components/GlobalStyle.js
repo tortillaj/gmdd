@@ -1,13 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
-import { shevy, media, themeValue } from '../theme'
+import { shevy, media, themeValue } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
   html {
-    /* 1rem = 14px @ base browser settings */
-    font-size: 87.5%;
+    /* 1rem = 12px @ base browser settings */
+    font-size: 75%;
     width: 100%;
     height: 100%;
     ${media.medium`
