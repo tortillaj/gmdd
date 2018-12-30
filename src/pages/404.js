@@ -1,11 +1,12 @@
 import React from 'react'
-import Layout from '../components/layout'
+
+import { FullPageLayout } from '../components'
 
 const NotFoundPage = () => (
-  <Layout>
+  <FullPageLayout>
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+  </FullPageLayout>
 )
 
 export default NotFoundPage
