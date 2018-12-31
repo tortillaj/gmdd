@@ -10,19 +10,20 @@ import {
   Em,
   Inset,
   P,
+  ProjectCarousel,
+  ProjectCarouselItem,
   ProjectList,
   ProjectListItem,
+  ProjectListName,
   SiteMain,
   SiteFooter,
 } from '../components'
 import { Logo } from '../components/Logo'
 
-const IndexPage = ({ data: { allFile: { edges } } }) => (
+const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
   <BlankLayout>
     <Branding>
-      <Inset>
-        <Logo />
-      </Inset>
+    <Logo />
     </Branding>
 
     <SiteMain>
@@ -33,8 +34,7 @@ const IndexPage = ({ data: { allFile: { edges } } }) => (
           <ContainerContent>
             <P>
               Located in beautiful Vermont, <Em>Green Mountain Design &amp; Development</Em> is a custom web design and
-              development shop. We excel in identifying and defining the unique qualities of our clients, and revealing
-              those to the world.
+              development shop.  We excel in identifying and defining the unique qualities of our clients. Let us help you succeed.
             </P>
           </ContainerContent>
         </Container>
@@ -44,14 +44,25 @@ const IndexPage = ({ data: { allFile: { edges } } }) => (
 
           <ContainerContent>
             <ProjectList>
-            {edges.map(project => {
-              console.log(project)
-              return (
-                <ProjectListItem key={project.node.id}>
-                  <h2>{project.node.childMarkdownRemark.frontmatter.title}</h2>
-                </ProjectListItem>
-              )
-            })}
+              {edges.map(project => {
+                return (
+                  <ProjectListItem key={project.node.id}>
+                    <ProjectListName>
+                      {project.node.client.name} 
+                      <span aria-hidden="true">&#8594;</span>
+                      <small>{project.node.title}</small>
+                    </ProjectListName>
+
+                    <ProjectCarousel>
+                      {project.node.carousel.map(image => (
+                        <ProjectCarouselItem key={image.resize.src}>
+                          <img src={image.resize.src} alt={image.title || ''} height={image.height} />
+                        </ProjectCarouselItem>
+                      ))}
+                    </ProjectCarousel>
+                  </ProjectListItem>
+                )
+              })}
             </ProjectList>
           </ContainerContent>
         </Container>
@@ -66,15 +77,26 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+    allContentfulProject {
       edges {
         node {
           id
-          childMarkdownRemark {
-            html
-            frontmatter {
-              title
-              images
+          title
+          carousel {
+            title
+            description
+            resize(width: 0, height: 200, resizingBehavior: NO_CHANGE) {
+              height
+              width
+              src
+            }
+          }
+          client {
+            name
+            about {
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }

@@ -7,7 +7,7 @@ export const Inset = styled.div`
   max-width: ${themeValue('layout.siteWidth')};
   width: 100%;
   margin: 0 auto;
-  padding: 0 ${shevy.baseSpacing(0.5)};
+  padding: 0 ${shevy.baseSpacing(1)};
 
   ${media.large`padding: 0;`}
 `

@@ -4,32 +4,31 @@ import { media, shevy, themeValue } from './theme'
 import { H2, P } from './Typography'
 
 export const ContainerTitle = styled(H2)`
+  font-weight: 600;
   font-size: ${shevy.body.fontSize};
   line-height: ${shevy.body.lineHeight};
   margin-bottom: 0;
   font-family: ${themeValue('typography.sans')};
-
-  ${media.medium`
-    font-size: ${shevy.h5.fontSize};
-    line-height: ${shevy.h5.lineHeight};
-  `};
+  text-transform: uppercase;
 `
 ContainerTitle.displayName = 'ContainerTitle'
 
 export const ContainerContent = styled.div`
   margin: ${shevy.baseSpacing(1)} 0 0;
 
-  ${P} {
-    font-size: ${shevy.h4.fontSize};
-    line-height: ${shevy.h4.lineHeight};
+  > ${P} {
+    font-size: ${shevy.h3.fontSize};
+    line-height: ${shevy.h3.lineHeight};
+    font-family: ${themeValue('typography.serif')};
+    font-weight: 400;
   }
 
   ${media.medium`
     margin: ${shevy.baseSpacing(2)} 0 0;
 
-    ${P} {
-      font-size: ${shevy.h2.fontSize};
-      line-height: ${shevy.h2.lineHeight};
+    > ${P} {
+      font-size: ${shevy.h1.fontSize};
+      line-height: ${shevy.h1.lineHeight};
     }
   `};
 `
@@ -37,7 +36,7 @@ ContainerContent.displayname = 'ContainerContent'
 
 export const Container = styled.section`
   padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(4)};
-  border-top: 3px solid black;
+  border-top: 3px solid ${themeValue('colors.foreground')};
 
   ${media.medium`padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(10)};`};
 `

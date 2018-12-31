@@ -1,3 +1,12 @@
+
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Green Mountain Design & Development',
@@ -14,15 +23,23 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-contentful',
       options: {
-        name: `projects`,
-        path: `${__dirname}/src/content/projects`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID, 
+        accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
     'gatsby-transformer-remark',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'ztr7eov',
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 
-import { media, shevy } from './theme'
+import { media, shevy, themeValue } from './theme'
 import { Inset } from './Inset'
 
-export const Branding = styled.header`
-  padding: ${shevy.baseSpacing(2)} 0 ${shevy.baseSpacing(4)};
+const BrandingElement = Inset.withComponent('header')
+BrandingElement.displayName = 'BrandingElement'
 
-  ${Inset} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+export const Branding = styled(BrandingElement)`
+  padding: ${shevy.baseSpacing(2)} 0 ${shevy.baseSpacing(4)};
+  border-top: 3px solid ${themeValue('colors.foreground')};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0 ${shevy.baseSpacing(10)};`};
 `

@@ -26,6 +26,9 @@ export const hexToRGB = (hex, alpha) => {
   }
 }
 
+const black = '#252525'
+const white = '#ffffff'
+
 const colors = {
   primary: {
     base: '#2B6497',
@@ -47,8 +50,12 @@ const colors = {
     base: '#d00',
     interaction: '#a00',
   },
-  foreground: '#252525',
-  background: '#ffffff',
+  always: {
+    black,
+    white,
+  },
+  foreground: black,
+  background: white,
 }
 
 const sizes = {
@@ -60,10 +67,10 @@ const sizes = {
 }
 
 const typography = {
-  sans: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
-  serif: 'Georgia, serif',
-  fontSize: '1.5rem',
-  lineHeight: 1.33,
+  sans: 'freight-sans-pro, sans-serif',
+  serif: 'freight-display-pro, helvetica, serif',
+  fontSize: '1.4rem',
+  lineHeight: 1.6,
 }
 
 export const shevy = new Shevy({
@@ -83,7 +90,7 @@ export const theme = {
   sizes,
   typography,
   layout: {
-    siteWidth: shevy.baseSpacing(60),
+    siteWidth: shevy.baseSpacing(52),
   },
 }
 
