@@ -49,8 +49,6 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
                   <ProjectListItem key={project.node.id}>
                     <ProjectListName>
                       {project.node.client.name} 
-                      <span aria-hidden="true">&#8594;</span>
-                      <small>{project.node.title}</small>
                     </ProjectListName>
 
                     <ProjectCarousel>
@@ -77,7 +75,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allContentfulProject {
+    allContentfulProject(sort: { fields: projectDate order: DESC }) {
       edges {
         node {
           id

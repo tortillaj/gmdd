@@ -6,6 +6,6 @@ export * from './layouts'
 export * from './GlobalStyle'
 export * from './Helmet'
 export * from './Inset'
+export * from './ProjectCarousel'
 export * from './ProjectList'
 export * from './Typography'
-
