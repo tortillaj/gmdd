@@ -28,7 +28,22 @@ export const ProjectListName = styled(H3)`
 `
 ProjectListName.displayName = 'ProjectListName'
 
-export const ProjectList = styled.ul``
+export const ProjectHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${media.medium`
+    flex-direction: row;
+    justify-content: space-between;
+  `}
+`
+ProjectHeader.displayName = 'ProjectHeader'
+
+export const ProjectLink = styled.a`
+`
+ProjectLink.displayName = 'ProjectLink'
+
+export const ProjectList = styled.ol``
 ProjectList.displayName = 'ProjectList'
 ProjectList.propTypes = {
   children: PropTypes.node.isRequired,

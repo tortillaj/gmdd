@@ -43,13 +43,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Green Mountain Design & Developmenent',
+        short_name: 'GMDD',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        background_color: '#2A6437',
+        theme_color: '#2A6437',
+        display: 'standalone',
+        icon: 'src/images/favicon.png',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

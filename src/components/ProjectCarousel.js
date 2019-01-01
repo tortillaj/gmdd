@@ -24,15 +24,14 @@ export const ProjectCarouselItem = styled.div`
 ProjectCarouselItem.displayName = 'ProjectCarouselItem'
 
 export class ProjectCarousel extends Component {
-  componentDidMount() {
-    const wrapper = this.wrapper
-    const wrapperWidth = wrapper.getBoundingClientRect().width
-    for (let i = 0; i < wrapper.childNodes.length; i++) {
-      const width = wrapper.childNodes[i].children[0].getBoundingClientRect().width
-      wrapper.childNodes[i].style.width = `${width}px`
-    }
-    console.log(wrapperWidth)
-  }
+  // componentDidMount() {
+  //   const wrapper = this.wrapper
+  //   const wrapperWidth = wrapper.getBoundingClientRect().width
+  //   for (let i = 0; i < wrapper.childNodes.length; i++) {
+  //     const width = wrapper.childNodes[i].children[0].getBoundingClientRect().width
+  //     wrapper.childNodes[i].style.width = `${width}px`
+  //   }
+  // }
   render() {
     const { children } = this.props
     // const modifiedChildren = React.Children.map(children, child => React.cloneElement(child, {

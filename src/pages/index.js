@@ -10,9 +10,10 @@ import {
   ContainerTitle,
   Em,
   Inset,
-  P,
   ProjectCarousel,
   ProjectCarouselItem,
+  ProjectHeader,
+  ProjectLink,
   ProjectList,
   ProjectListItem,
   ProjectListName,
@@ -24,7 +25,7 @@ import { Logo } from '../components/Logo'
 const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
   <BlankLayout>
     <Branding>
-    <Logo />
+      <Logo />
     </Branding>
 
     <SiteMain>
@@ -35,7 +36,8 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
           <ContainerContent>
             <Callout>
               Located in beautiful Vermont, <Em>Green Mountain Design &amp; Development</Em> is a custom web design and
-              development shop.  We excel in identifying and defining the unique qualities of our clients. Let us help you succeed.
+              development shop. We excel in identifying and defining the unique qualities of our clients. Let us help
+              you succeed.
             </Callout>
           </ContainerContent>
         </Container>
@@ -48,9 +50,10 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
               {edges.map(project => {
                 return (
                   <ProjectListItem key={project.node.id}>
-                    <ProjectListName>
-                      {project.node.client.name} 
-                    </ProjectListName>
+                    <ProjectHeader>
+                      <ProjectListName>{project.node.client.name}</ProjectListName>
+                      <ProjectLink>View the project</ProjectLink>
+                    </ProjectHeader>
 
                     <ProjectCarousel>
                       {project.node.carousel.map(image => (
@@ -76,7 +79,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allContentfulProject(sort: { fields: projectDate order: DESC }) {
+    allContentfulProject(sort: { fields: projectDate, order: DESC }) {
       edges {
         node {
           id
