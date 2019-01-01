@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- stable
+cache:
+  directories:
+  - node_modules
+after_success:
+- npm run deploy
+before_script:
+- npm i -g gatsby
+- npm i
+script:
+- npm run test
+before_install:
+- openssl aes-256-cbc -K $encrypted_769fe7ded6b2_key -iv $encrypted_769fe7ded6b2_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
