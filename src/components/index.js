@@ -1,5 +1,6 @@
 export * from './theme'
 export * from './Branding'
+export * from './Callout'
 export * from './Chrome'
 export * from './Container'
 export * from './layouts'

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { media, shevy, themeValue } from './theme'
-import { H2, P } from './Typography'
+import { H2 } from './Typography'
 
 export const ContainerTitle = styled(H2)`
   font-weight: 600;
@@ -16,20 +16,8 @@ ContainerTitle.displayName = 'ContainerTitle'
 export const ContainerContent = styled.div`
   margin: ${shevy.baseSpacing(1)} 0 0;
 
-  > ${P} {
-    font-size: ${shevy.h3.fontSize};
-    line-height: ${shevy.h3.lineHeight};
-    font-family: ${themeValue('typography.serif')};
-    font-weight: 400;
-  }
-
   ${media.medium`
     margin: ${shevy.baseSpacing(2)} 0 0;
-
-    > ${P} {
-      font-size: ${shevy.h1.fontSize};
-      line-height: ${shevy.h1.lineHeight};
-    }
   `};
 `
 ContainerContent.displayname = 'ContainerContent'

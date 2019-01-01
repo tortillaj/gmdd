@@ -31,20 +31,22 @@ const white = '#ffffff'
 
 const colors = {
   primary: {
-    base: '#2B6497',
-    interaction: '#1E466A',
-    highlight: '#3882C5',
+    base: '#2A6437',
+    interaction: '#0E4119',
+    highlight: '#64B275',
+    pale: '#79B285',
   },
   secondary: {
     pale: '#E7E7E7',
     base: '#9A9A9A',
-    interaction: '#7B7B7B',
+    interaction: '#0B2E35',
     highlight: '#C8C8C8',
+    pale: '#74A0A8',
   },
   accent: {
-    base: '#FF7100',
+    base: '#234A51',
     interaction: '#A64A00',
-    highlight: '#FF9540',
+    highlight: '#619DA8',
   },
   warning: {
     base: '#d00',

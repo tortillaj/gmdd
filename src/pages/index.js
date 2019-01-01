@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import {
   BlankLayout,
   Branding,
+  Callout,
   Container,
   ContainerContent,
   ContainerTitle,
@@ -32,10 +33,10 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
           <ContainerTitle>About</ContainerTitle>
 
           <ContainerContent>
-            <P>
+            <Callout>
               Located in beautiful Vermont, <Em>Green Mountain Design &amp; Development</Em> is a custom web design and
               development shop.  We excel in identifying and defining the unique qualities of our clients. Let us help you succeed.
-            </P>
+            </Callout>
           </ContainerContent>
         </Container>
 
