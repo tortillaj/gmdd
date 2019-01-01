@@ -36,7 +36,7 @@ export const SiteHeader = styled.header`
 SiteHeader.displayName = 'SiteHeader'
 
 const Footer = styled.footer`
-  color: ${themeValue('colors.secondary.highlight')};
+  color: ${themeValue('colors.secondary.pale')};
   background-color: ${themeValue('colors.always.black')};
   height: ${shevy.baseSpacing(4)};
   padding: ${shevy.baseSpacing(0.5)} 0;
