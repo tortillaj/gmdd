@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { media, shevy, themeValue } from './theme'
 import { H2 } from './Typography'
@@ -24,7 +24,10 @@ ContainerContent.displayname = 'ContainerContent'
 
 export const Container = styled.section`
   padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(4)};
-  border-top: 3px solid ${themeValue('colors.foreground')};
+
+  ${props => !props.borderless && css`
+    border-top: 3px solid ${themeValue('colors.foreground')};
+  `}
 
   ${media.medium`padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(10)};`};
 `

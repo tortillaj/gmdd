@@ -31,7 +31,7 @@ export const ProjectListName = styled(H3)`
 `
 ProjectListName.displayName = 'ProjectListName'
 
-export const ProjectHeader = styled.div`
+export const ProjectListHeader = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: ${shevy.baseSpacing(1)};
@@ -42,7 +42,7 @@ export const ProjectHeader = styled.div`
     justify-content: space-between;
   `}
 `
-ProjectHeader.displayName = 'ProjectHeader'
+ProjectListHeader.displayName = 'ProjectListHeader'
 
 export const ProjectView = styled.div`
   transition: background 0.3s ease-out;

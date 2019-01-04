@@ -12,7 +12,7 @@ import {
   Inset,
   ProjectCarousel,
   ProjectCarouselItem,
-  ProjectHeader,
+  ProjectListHeader,
   ProjectLink,
   ProjectList,
   ProjectListItem,
@@ -52,10 +52,10 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
                 return (
                   <ProjectListItem key={project.node.id}>
                     <ProjectLink to={`project/${project.node.slug}`}>
-                      <ProjectHeader>
+                      <ProjectListHeader>
                         <ProjectListName>{project.node.client.name}</ProjectListName>
                         <ProjectView>View the project</ProjectView>
-                      </ProjectHeader>
+                      </ProjectListHeader>
 
                       <ProjectCarousel>
                         {project.node.carousel.map(image => (

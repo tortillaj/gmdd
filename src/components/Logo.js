@@ -14,13 +14,13 @@ export const CondensedLogo = ({ color, height }) => (
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g transform="translate(-103.000000, 14.000000)" fill-rule="nonzero" stroke-width="15">
+          <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <g transform="translate(-103.000000, 14.000000)" fillRule="nonzero" strokeWidth="15">
               <g transform="translate(117.000000, 0.000000)">
-                <polygon id="Triangle" stroke={fillColor} points="138 0 276 207 0 207" />
-                <path d="M176.5,0 L315.5,207" id="Line-3" stroke={fillColor} stroke-linecap="square" />
-                <path d="M216.5,0 L355.5,207" id="Line-3" stroke={fillColor} stroke-linecap="square" />
-                <path d="M256.5,0 L395.5,207" id="Line-3" stroke={fillColor} stroke-linecap="square" />
+                <polygon stroke={fillColor} points="138 0 276 207 0 207" />
+                <path d="M176.5,0 L315.5,207" stroke={fillColor} strokeLinecap="square" />
+                <path d="M216.5,0 L355.5,207" stroke={fillColor} strokeLinecap="square" />
+                <path d="M256.5,0 L395.5,207" stroke={fillColor} strokeLinecap="square" />
               </g>
             </g>
           </g>
