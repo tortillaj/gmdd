@@ -41,12 +41,12 @@ const colors = {
     base: '#9A9A9A',
     interaction: '#0B2E35',
     highlight: '#C8C8C8',
-    pale: '#74A0A8',
   },
   accent: {
-    base: '#234A51',
-    interaction: '#A64A00',
-    highlight: '#619DA8',
+    base: '#e8bb45',
+    interaction: '#e8b11f',
+    highlight: '#f2d997',
+    pale: '#f3e2b4',
   },
   warning: {
     base: '#d00',
@@ -70,7 +70,7 @@ const sizes = {
 
 const typography = {
   sans: 'freight-sans-pro, sans-serif',
-  serif: 'freight-display-pro, helvetica, serif',
+  serif: 'freight-display-pro, serif',
   fontSize: '1.4rem',
   lineHeight: 1.6,
 }

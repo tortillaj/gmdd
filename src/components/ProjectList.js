@@ -72,7 +72,7 @@ ProjectList.propTypes = {
 
 export const ProjectLink = styled(Link)`
   text-decoration: none;
-
+  
   &:hover {
     ${ProjectView} {
       background-color: ${themeValue('colors.accent.interaction')};
