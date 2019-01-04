@@ -17,18 +17,19 @@ import {
   ProjectList,
   ProjectListItem,
   ProjectListName,
-  SiteMain,
-  SiteFooter,
+  ProjectView,
+  Main,
+  Footer,
 } from '../components'
 import { Logo } from '../components/Logo'
 
 const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
   <BlankLayout>
-    <Branding>
+    <Branding large>
       <Logo />
     </Branding>
 
-    <SiteMain>
+    <Main>
       <Inset>
         <Container>
           <ContainerTitle>About</ContainerTitle>
@@ -50,18 +51,20 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
               {edges.map(project => {
                 return (
                   <ProjectListItem key={project.node.id}>
-                    <ProjectHeader>
-                      <ProjectListName>{project.node.client.name}</ProjectListName>
-                      <ProjectLink>View the project</ProjectLink>
-                    </ProjectHeader>
+                    <ProjectLink to={`project/${project.node.slug}`}>
+                      <ProjectHeader>
+                        <ProjectListName>{project.node.client.name}</ProjectListName>
+                        <ProjectView>View the project</ProjectView>
+                      </ProjectHeader>
 
-                    <ProjectCarousel>
-                      {project.node.carousel.map(image => (
-                        <ProjectCarouselItem key={image.resize.src}>
-                          <img src={image.resize.src} alt={image.title || ''} height={image.height} />
-                        </ProjectCarouselItem>
-                      ))}
-                    </ProjectCarousel>
+                      <ProjectCarousel>
+                        {project.node.carousel.map(image => (
+                          <ProjectCarouselItem key={image.resize.src}>
+                            <img src={image.resize.src} alt={image.title || ''} height={image.height} />
+                          </ProjectCarouselItem>
+                        ))}
+                      </ProjectCarousel>
+                    </ProjectLink>
                   </ProjectListItem>
                 )
               })}
@@ -69,9 +72,9 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
           </ContainerContent>
         </Container>
       </Inset>
-    </SiteMain>
+    </Main>
 
-    <SiteFooter />
+    <Footer />
   </BlankLayout>
 )
 
@@ -84,6 +87,7 @@ export const pageQuery = graphql`
         node {
           id
           title
+          slug
           carousel {
             title
             description

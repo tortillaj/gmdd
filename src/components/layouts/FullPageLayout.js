@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
+import { ThemeProvider, ThemeConsumer } from 'styled-components'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
 import { theme } from '../theme'
 import { GlobalStyle } from '../GlobalStyle'
 import { Helmet } from '../Helmet'
-import { Inset } from '../Inset'
-import { SiteHeader, SiteFooter, SiteMain, Wrapper } from '../Chrome'
+import { Footer, Main, Wrapper } from '../Chrome'
+import { CondensedLogo } from '../Logo'
+import { Branding, BrandingMotto } from '../Branding'
 
 export class FullPageLayout extends React.Component {
   render() {
@@ -30,22 +31,25 @@ export class FullPageLayout extends React.Component {
               }
             `}
             render={data => (
-              <Fragment>
-                <Helmet title={title} />
-                <Wrapper>
-                  <SiteHeader>
-                    <Inset>
-                      {data.site.siteMetadata.title}
-                    </Inset>
-                  </SiteHeader>
+              <ThemeConsumer>
+                {theme => (
+                  <Fragment>
+                    <Helmet title={title} />
+                    <Wrapper>
+                      <Branding>
+                        <Link to="/">
+                          <CondensedLogo color={theme.colors.primary.base} height={24} />
+                        </Link>
+                        <BrandingMotto>{data.site.siteMetadata.title}</BrandingMotto>
+                      </Branding>
 
-                  <SiteMain>
-                    <Inset>{this.props.children}</Inset>
-                  </SiteMain>
+                      <Main>{this.props.children}</Main>
 
-                  <SiteFooter />
-                </Wrapper>
-              </Fragment>
+                      <Footer />
+                    </Wrapper>
+                  </Fragment>
+                )}
+              </ThemeConsumer>
             )}
           />
         </Fragment>

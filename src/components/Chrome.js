@@ -14,29 +14,19 @@ export const Wrapper = styled.article`
 `
 Wrapper.displayName = 'Wrapper'
 
-export const SiteMain = styled.main`
+export const Main = styled.main`
   flex: 1;
   margin: ${shevy.baseSpacing(1)} 0;
   
   ${media.large`margin: ${shevy.baseSpacing(2)} 0;`}
 `
-SiteMain.displayName = 'SiteMain'
-SiteMain.propTypes = {
+Main.displayName = 'Main'
+Main.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export const SiteHeader = styled.header`
-  display: flex;
-  color: ${themeValue('colors.background')};
-  background-color: ${themeValue('colors.foreground')};
-  padding: ${shevy.baseSpacing(0.5)} 0;
-
-  ${media.large`padding: ${shevy.baseSpacing(1)} 0;`}
-`
-SiteHeader.displayName = 'SiteHeader'
-
-const Footer = styled.footer`
-  color: ${themeValue('colors.secondary.pale')};
+const FooterWrapper = styled.footer`
+  color: ${themeValue('colors.accent.highlight')};
   background-color: ${themeValue('colors.always.black')};
   height: ${shevy.baseSpacing(4)};
   padding: ${shevy.baseSpacing(0.5)} 0;
@@ -56,13 +46,13 @@ const Footer = styled.footer`
     `}
   }
 `
-Footer.displayName = 'Footer'
+FooterWrapper.displayName = 'FooterWrapper'
 
-export const SiteFooter = () => (
-  <Footer>
+export const Footer = () => (
+  <FooterWrapper>
     <Inset>
       <Strong>(802) 999-9999</Strong>
       <Strong>Calais, Vermont</Strong>
     </Inset>
-  </Footer>
+  </FooterWrapper>
 )
