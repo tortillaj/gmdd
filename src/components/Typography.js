@@ -51,3 +51,23 @@ export const Strong = styled.strong`
   font-weight: 600;
 `
 Strong.displayName = 'Strong'
+
+export const WYSIWYG = styled.div`
+  p {
+    font-size: ${shevy.content.fontSize};
+    line-height: ${shevy.content.lineHeight};
+    margin-bottom: ${shevy.content.marginBottom};
+    font-family: ${themeValue('typography.serif')};
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+  strong {
+    font-weight: 600;
+  }
+  em {
+    font-style: italic;
+  }
+`
+WYSIWYG.displayName = 'WYSIWYG'
