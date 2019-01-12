@@ -84,6 +84,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
 
     <Sections>
       {contentfulProject.sections.map(section => {
+        if (section.internal) {
         switch (section.internal.type) {
           case 'ContentfulSectionImage': {
             return (
@@ -96,7 +97,8 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
           }
           case 'ContentfulSectionImageWithCopy': {
             return (
-              <InsetInner key={section.id} width="65%">
+              <Inset key={section.id}>
+              <InsetInner width="80%">
                 <SectionImageWithCopy>
                   <SectionImageWithCopyImage position={section.imagePosition.imagePosition.toLowerCase()} fixed={section.image.fixed} alt={section.image.title} longdesc={section.image.description} />
                   <SectionImageWithCopyText>
@@ -105,11 +107,15 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
                   </SectionImageWithCopyText>
                 </SectionImageWithCopy>
               </InsetInner>
+              </Inset>
             )
           }
           default:
             return null
         }
+      } else {
+        return null
+      }
       })}
     </Sections>
   </FullPageLayout>
