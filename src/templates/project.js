@@ -1,19 +1,27 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import {
-  Container,
-  ContainerContent,
   FullPageLayout,
   H1,
+  H2,
   Inset,
+  InsetInner,
   P,
   ProjectHeader,
   ProjectIntro,
+  ProjectIntroInfo,
+  ProjectIntroLead,
   ProjectMetaContainer,
   ProjectMeta,
   ProjectMetaLabel,
   ProjectMetaContent,
+  Sections,
+  SectionImage,
+  SectionImageWithCopy,
+  SectionImageWithCopyImage,
+  SectionImageWithCopyText,
 } from '../components'
 
 const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
@@ -24,14 +32,17 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
       <H1>{contentfulProject.client.name}</H1>
 
       <ProjectHeader>
-        <ProjectIntro dangerouslySetInnerHTML={{ __html: contentfulProject.client.about.childMarkdownRemark.html }} />
+        <ProjectIntro>
+          <ProjectIntroLead dangerouslySetInnerHTML={{ __html: contentfulProject.client.about.childMarkdownRemark.html }} />
+          <ProjectIntroInfo dangerouslySetInnerHTML={{ __html: contentfulProject.intro.childMarkdownRemark.html }} />
+        </ProjectIntro>
 
         <ProjectMetaContainer>
           {contentfulProject.client.industry && (
             <ProjectMeta>
               <ProjectMetaLabel>Industry</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.client.industry.map(industry => <P>{industry}</P>)}
+                {contentfulProject.client.industry.map(industry => <P key={industry}>{industry}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -39,14 +50,14 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
           {contentfulProject.timeline && (
             <ProjectMeta>
               <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
-              <ProjectMetaContent>{contentfulProject.timeline.map(time => <P>{time}</P>)}</ProjectMetaContent>
+              <ProjectMetaContent>{contentfulProject.timeline.map(time => <P key={time}>{time}</P>)}</ProjectMetaContent>
             </ProjectMeta>
           )}
 
           {contentfulProject.platform && (
             <ProjectMeta>
               <ProjectMetaLabel>Platform</ProjectMetaLabel>
-              <ProjectMetaContent>{contentfulProject.platform.map(format => <P>{format}</P>)}</ProjectMetaContent>
+              <ProjectMetaContent>{contentfulProject.platform.map(format => <P key={format}>{format}</P>)}</ProjectMetaContent>
             </ProjectMeta>
           )}
 
@@ -54,7 +65,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Technology</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.technology.map(tech => <P>{tech}</P>)}
+                {contentfulProject.technology.map(tech => <P key={tech}>{tech}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -63,22 +74,96 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.deliverables.map(deliverable => <P>{deliverable}</P>)}
+                {contentfulProject.deliverables.map(deliverable => <P key={deliverable}>{deliverable}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
         </ProjectMetaContainer>
       </ProjectHeader>
     </Inset>
+
+    <Sections>
+      {contentfulProject.sections.map(section => {
+        switch (section.internal.type) {
+          case 'ContentfulSectionImage': {
+            return (
+              <SectionImage key={section.id}>
+                <Inset>
+                  <Img fluid={section.image.fluid} alt={section.image.title} longdesc={section.image.description} />
+                </Inset>
+              </SectionImage>
+            )
+          }
+          case 'ContentfulSectionImageWithCopy': {
+            return (
+              <InsetInner key={section.id} width="65%">
+                <SectionImageWithCopy>
+                  <SectionImageWithCopyImage position={section.imagePosition.imagePosition.toLowerCase()} fixed={section.image.fixed} alt={section.image.title} longdesc={section.image.description} />
+                  <SectionImageWithCopyText>
+                    <H2>{section.title}</H2>
+                    <div dangerouslySetInnerHTML={{ __html: section.copy.childMarkdownRemark.html }} />
+                  </SectionImageWithCopyText>
+                </SectionImageWithCopy>
+              </InsetInner>
+            )
+          }
+          default:
+            return null
+        }
+      })}
+    </Sections>
   </FullPageLayout>
 )
 
 export default ProjectPageTemplate
 
 export const pageQuery = graphql`
+  fragment SectionImageFragment on ContentfulSectionImage {
+    internal {
+      type
+    }
+    id
+    title
+    image {
+      title
+      description
+      fluid(maxWidth:1040) {
+        ...GatsbyContentfulFluid
+      }
+    }
+  }
+
+  fragment SectionImageWithCopyFragment on ContentfulSectionImageWithCopy {
+    internal {
+      type
+    }
+    id
+    title
+    copy {
+      childMarkdownRemark {
+        html
+      }
+    }
+    image {
+      title
+      description
+      fixed(width:340) {
+        ...GatsbyContentfulFixed
+      }
+    }
+    imagePosition {
+      imagePosition
+    }
+  }
+
   query ProjectById($id: String!) {
     contentfulProject(id: { eq: $id }) {
       title
+      intro {
+        childMarkdownRemark {
+          html
+        }
+      }
       timeline
       deliverables
       platform
@@ -90,6 +175,10 @@ export const pageQuery = graphql`
             html
           }
         }
+      }
+      sections {
+        ...SectionImageFragment
+        ...SectionImageWithCopyFragment
       }
     }
   }
