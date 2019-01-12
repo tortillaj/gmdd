@@ -72,7 +72,7 @@ const typography = {
   sans: 'freight-sans-pro, sans-serif',
   serif: 'freight-display-pro, serif',
   fontSize: '1.4rem',
-  lineHeight: 1.6,
+  lineHeight: 1.35,
 }
 
 export const shevy = new Shevy({
@@ -92,7 +92,7 @@ export const theme = {
   sizes,
   typography,
   layout: {
-    siteWidth: shevy.baseSpacing(52),
+    siteWidth: shevy.baseSpacing(55),
   },
 }
 

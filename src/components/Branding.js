@@ -9,14 +9,14 @@ export const BrandingMotto = styled(P)`
   display: inline-block;
   font-size: ${shevy.body.fontSize};
   line-height: 1;
-  width: ${shevy.baseSpacing(7)};
+  width: ${shevy.baseSpacing(8.5)};
   font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 0 ${shevy.baseSpacing(0.5)};
 `
 BrandingMotto.displayName = 'BrandingMotto'
 
-const BrandingWrapper = styled.header`margin-bottom: ${shevy.baseSpacing(3)};`
+const BrandingWrapper = styled.header`margin-bottom: ${shevy.baseSpacing(1)};`
 BrandingWrapper.displayName = 'BrandingWrapper'
 
 const BrandingInner = styled.div`
