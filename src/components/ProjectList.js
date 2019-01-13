@@ -55,7 +55,7 @@ export const ProjectView = styled.div`
 
   &::after {
     font-family: sans;
-    content: "\u276F";
+    content: '\u276F';
     display: inline-block;
     margin-left: -${shevy.baseSpacing(0.25)};
     opacity: 0;
@@ -72,7 +72,7 @@ ProjectList.propTypes = {
 
 export const ProjectLink = styled(Link)`
   text-decoration: none;
-  
+
   &:hover {
     ${ProjectView} {
       background-color: ${themeValue('colors.accent.interaction')};

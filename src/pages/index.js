@@ -23,7 +23,11 @@ import {
 } from '../components'
 import { Logo } from '../components/Logo'
 
-const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
+const IndexPage = ({
+  data: {
+    allContentfulProject: { edges },
+  },
+}) => (
   <BlankLayout>
     <Branding large>
       <Logo />
@@ -36,9 +40,10 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
 
           <ContainerContent>
             <Callout>
-              Located in beautiful Vermont, <Em>Green Mountain Design &amp; Development</Em> is a custom web design and
-              development shop. We excel in identifying and defining the unique qualities of our clients. Let us help
-              you succeed.
+              Located in beautiful Vermont,{' '}
+              <Em>Green Mountain Design &amp; Development</Em> is a custom web
+              design and development shop. We excel in identifying and defining
+              the unique qualities of our clients. Let us help you succeed.
             </Callout>
           </ContainerContent>
         </Container>
@@ -53,14 +58,20 @@ const IndexPage = ({ data: { allContentfulProject: { edges } } }) => (
                   <ProjectListItem key={project.node.id}>
                     <ProjectLink to={`project/${project.node.slug}`}>
                       <ProjectListHeader>
-                        <ProjectListName>{project.node.client.name}</ProjectListName>
+                        <ProjectListName>
+                          {project.node.client.name}
+                        </ProjectListName>
                         <ProjectView>View the project</ProjectView>
                       </ProjectListHeader>
 
                       <ProjectCarousel>
                         {project.node.carousel.map(image => (
                           <ProjectCarouselItem key={image.resize.src}>
-                            <img src={image.resize.src} alt={image.title || ''} height={image.height} />
+                            <img
+                              src={image.resize.src}
+                              alt={image.title}
+                              height={image.height}
+                            />
                           </ProjectCarouselItem>
                         ))}
                       </ProjectCarousel>

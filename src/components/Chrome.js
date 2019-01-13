@@ -17,7 +17,7 @@ Wrapper.displayName = 'Wrapper'
 export const Main = styled.main`
   flex: 1;
   margin: ${shevy.baseSpacing(1)} 0;
-  
+
   ${media.large`margin: ${shevy.baseSpacing(2)} 0;`}
 `
 Main.displayName = 'Main'

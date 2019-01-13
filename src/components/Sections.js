@@ -13,19 +13,22 @@ export const SectionImage = styled.section`
   padding: ${shevy.baseSpacing(1)};
   background-color: ${themeValue('colors.secondary.pale')};
 
-  ${media.medium`padding: ${shevy.baseSpacing(2)} 0;`}
+  ${media.medium`padding: ${shevy.baseSpacing(3)} 0;`}
 `
 SectionImage.displayName = 'SectionImage'
 
 export const SectionImageWithCopyImage = styled(Img)`
   margin: 0 auto;
-  ${props => props.position === 'right' ? css`
-    order: 1;
-    ${media.medium`margin-left: ${shevy.baseSpacing(2)};`}
-  ` : css`
-    order: 0;
-    ${media.medium`margin-right: ${shevy.baseSpacing(2)};`}
-  `}
+  ${props =>
+    props.position === 'right'
+      ? css`
+          order: 1;
+          ${media.medium`margin-left: ${shevy.baseSpacing(2)};`}
+        `
+      : css`
+          order: 0;
+          ${media.medium`margin-right: ${shevy.baseSpacing(2)};`}
+        `}
 `
 SectionImageWithCopyImage.displayName = 'SectionImageWithCopyImage'
 
@@ -51,8 +54,40 @@ export const SectionImageWithCopy = styled.section`
   padding: ${shevy.baseSpacing(1)};
 
   ${media.medium`
-    padding: ${shevy.baseSpacing(2)} 0;
+    padding: ${shevy.baseSpacing(4)} 0;
     display: flex;
   `}
 `
 SectionImageWithCopy.displayName = 'SectionImageWithCopy'
+
+export const SectionCopy = styled.section`
+  padding: ${shevy.baseSpacing(1)};
+
+  ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
+`
+SectionCopy.displayName = 'SectionCopy'
+
+export const SectionCopyText = styled(WYSIWYG)`
+  text-align: center;
+
+  ${media.medium`
+    p {
+      font-size: ${shevy.h4.fontSize};
+    }
+  `}
+`
+SectionCopyText.displayName = 'SectionCopyText'
+
+export const SectionCarousel = styled.section`
+  padding: 0 ${shevy.baseSpacing(1)};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    margin: ${shevy.baseSpacing(1)};
+  }
+
+  ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
+`
+SectionCarousel.displayName = 'SectionCarousel'

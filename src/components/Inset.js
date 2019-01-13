@@ -14,13 +14,13 @@ export const Inset = styled.div`
 Inset.displayName = 'Inset'
 
 export const InsetInner = styled.div`
-  width: ${props => props.width};
   margin: 0 auto;
+  ${media.large`width: ${props => props.width};`}
 `
 InsetInner.displayName = 'InsetInner'
 InsetInner.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 InsetInner.defaultProps = {
-  width: shevy.baseSpacing(30),
+  width: '60vw',
 }

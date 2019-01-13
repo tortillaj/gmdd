@@ -25,10 +25,14 @@ ContainerContent.displayname = 'ContainerContent'
 export const Container = styled.section`
   padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(4)};
 
-  ${props => !props.borderless && css`
-    border-top: 3px solid ${themeValue('colors.foreground')};
-  `}
+  ${props =>
+    !props.borderless &&
+    css`
+      border-top: 3px solid ${themeValue('colors.foreground')};
+    `}
 
-  ${media.medium`padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(10)};`};
+  ${media.medium`padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(
+    10
+  )};`};
 `
 Container.displayName = 'Container'

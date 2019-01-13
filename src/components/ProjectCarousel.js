@@ -7,7 +7,6 @@ export const ProjectCarouselWrapper = styled.div`
   height: ${shevy.baseSpacing(7)};
   overflow: hidden;
   display: flex;
-
 `
 ProjectCarouselWrapper.displayName = 'ProjectCarouselWrapper'
 
@@ -15,7 +14,7 @@ export const ProjectCarouselItem = styled.div`
   height: inherit;
   margin-right: ${shevy.baseSpacing(1)};
 
-  img { 
+  img {
     height: 100%;
     width: auto;
     display: block;
@@ -38,7 +37,7 @@ export class ProjectCarousel extends Component {
     //   width: child.getBoundingClientRect().width,
     // }))
     return (
-      <ProjectCarouselWrapper ref={wrapper => this.wrapper = wrapper}>
+      <ProjectCarouselWrapper ref={wrapper => (this.wrapper = wrapper)}>
         {children}
       </ProjectCarouselWrapper>
     )

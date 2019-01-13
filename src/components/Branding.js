@@ -16,23 +16,31 @@ export const BrandingMotto = styled(P)`
 `
 BrandingMotto.displayName = 'BrandingMotto'
 
-const BrandingWrapper = styled.header`margin-bottom: ${shevy.baseSpacing(1)};`
+const BrandingWrapper = styled.header`
+  margin-bottom: ${shevy.baseSpacing(1)};
+`
 BrandingWrapper.displayName = 'BrandingWrapper'
 
 const BrandingInner = styled.div`
-  padding-top: ${props => (props.large ? shevy.baseSpacing(2) : shevy.baseSpacing(0.5))};
-  padding-bottom: ${props => (props.large ? shevy.baseSpacing(4) : shevy.baseSpacing(0.5))};
+  padding-top: ${props =>
+    props.large ? shevy.baseSpacing(2) : shevy.baseSpacing(0.5)};
+  padding-bottom: ${props =>
+    props.large ? shevy.baseSpacing(4) : shevy.baseSpacing(0.5)};
   border-top: 3px solid ${themeValue('colors.foreground')};
 
-  ${props => props.large && css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `}
+  ${props =>
+    props.large &&
+    css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `}
 
   ${media.medium`
-    padding-top: ${props => (props.large ? shevy.baseSpacing(4) : shevy.baseSpacing(0.5))};
-    padding-bottom: ${props => (props.large ? shevy.baseSpacing(10) : shevy.baseSpacing(0.5))};
+    padding-top: ${props =>
+      props.large ? shevy.baseSpacing(4) : shevy.baseSpacing(0.5)};
+    padding-bottom: ${props =>
+      props.large ? shevy.baseSpacing(10) : shevy.baseSpacing(0.5)};
   `};
 `
 BrandingInner.displayName = 'BrandingInner'

@@ -16,13 +16,21 @@ export const Helmet = ({ title, children }) => (
       }
     `}
     render={data => {
-      const pageTitle = title ? `${title} | ${data.site.siteMetadata.title}` : data.site.siteMetadata.title
+      const pageTitle = title
+        ? `${title} | ${data.site.siteMetadata.title}`
+        : data.site.siteMetadata.title
       return (
         <GatsbyHelmet
           title={pageTitle}
           meta={[
-            { name: 'description', content: data.site.siteMetadata.description },
-            { name: 'keywords', content: data.site.siteMetadata.keywords.join(',') },
+            {
+              name: 'description',
+              content: data.site.siteMetadata.description,
+            },
+            {
+              name: 'keywords',
+              content: data.site.siteMetadata.keywords.join(','),
+            },
           ]}
         >
           <html lang="en" />

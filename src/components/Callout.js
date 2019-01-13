@@ -9,7 +9,6 @@ export const Callout = styled(P)`
   font-family: ${themeValue('typography.serif')};
   font-weight: 400;
 
-
   ${media.medium`
     font-size: ${shevy.h1.fontSize};
     line-height: ${shevy.h1.lineHeight};

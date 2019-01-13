@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { media, shevy } from './theme'
 import { P, WYSIWYG } from './Typography'
 
-export const ProjectIntro = styled.div``
+export const ProjectIntro = styled.div`
+  ${media.medium`flex: 1;`}
+`
 ProjectIntro.displayName = 'ProjectIntro'
 
 export const ProjectIntroLead = styled.div`
@@ -50,7 +52,7 @@ export const ProjectMetaContainer = styled.dl`
   ${media.medium`
     display: block;
     margin: 0 ${shevy.baseSpacing(4)} 0 0;
-    flex-basis: ${shevy.baseSpacing(24)};
+    flex-basis: ${shevy.baseSpacing(12)};
     order: -1;
   `}
 `
