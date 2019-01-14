@@ -81,7 +81,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
               </ProjectMetaContent>
             </ProjectMeta>
           )}
-
+{console.log(contentfulProject)}
           {contentfulProject.technology && (
             <ProjectMeta>
               <ProjectMetaLabel>Technology</ProjectMetaLabel>
@@ -107,6 +107,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
       </ProjectHeader>
     </Inset>
 
+{contentfulProject.sections && (
     <Sections>
       {contentfulProject.sections.map(section => {
         if (section.internal) {
@@ -145,6 +146,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
                 <SectionCarousel key={section.id}>
                   {section.images.map(image => (
                     <img
+                      key={image.resize.src}
                       src={image.resize.src}
                       alt={image.title}
                       height={image.height}
@@ -186,6 +188,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
         }
       })}
     </Sections>
+  )}
   </FullPageLayout>
 )
 
@@ -201,7 +204,7 @@ export const pageQuery = graphql`
     image {
       title
       description
-      fluid(maxWidth: 1040) {
+      fluid(maxWidth: 1100) {
         ...GatsbyContentfulFluid
       }
     }
@@ -271,6 +274,7 @@ export const pageQuery = graphql`
       timeline
       deliverables
       platform
+      technology
       client {
         name
         industry

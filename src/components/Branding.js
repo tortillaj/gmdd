@@ -13,11 +13,13 @@ export const BrandingMotto = styled(P)`
   font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 0 ${shevy.baseSpacing(0.5)};
+  color: ${themeValue('colors.primary.highlight')};
 `
 BrandingMotto.displayName = 'BrandingMotto'
 
 const BrandingWrapper = styled.header`
   margin-bottom: ${shevy.baseSpacing(1)};
+  ${props => !props.large && css`background-color: ${themeValue('colors.foreground')};`}
 `
 BrandingWrapper.displayName = 'BrandingWrapper'
 
@@ -26,11 +28,11 @@ const BrandingInner = styled.div`
     props.large ? shevy.baseSpacing(2) : shevy.baseSpacing(0.5)};
   padding-bottom: ${props =>
     props.large ? shevy.baseSpacing(4) : shevy.baseSpacing(0.5)};
-  border-top: 3px solid ${themeValue('colors.foreground')};
 
   ${props =>
     props.large &&
     css`
+      border-top: 3px solid ${themeValue('colors.foreground')};
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -46,7 +48,7 @@ const BrandingInner = styled.div`
 BrandingInner.displayName = 'BrandingInner'
 
 export const Branding = ({ large, children, className }) => (
-  <BrandingWrapper className={className}>
+  <BrandingWrapper className={className} large={large}>
     <Inset>
       <BrandingInner large={large}>{children}</BrandingInner>
     </Inset>

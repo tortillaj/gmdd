@@ -39,13 +39,13 @@ export class FullPageLayout extends React.Component {
                       <Branding>
                         <Link to="/">
                           <CondensedLogo
-                            color={theme.colors.primary.base}
+                            color={theme.colors.primary.highlight}
                             height={24}
                           />
+                          <BrandingMotto>
+                            {data.site.siteMetadata.title}
+                          </BrandingMotto>
                         </Link>
-                        <BrandingMotto>
-                          {data.site.siteMetadata.title}
-                        </BrandingMotto>
                       </Branding>
 
                       <Main>{this.props.children}</Main>

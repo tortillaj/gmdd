@@ -10,10 +10,10 @@ export const Sections = styled.div`
 Sections.displayName = 'Sections'
 
 export const SectionImage = styled.section`
-  padding: ${shevy.baseSpacing(1)};
+  padding: ${shevy.baseSpacing(2)};
   background-color: ${themeValue('colors.secondary.pale')};
 
-  ${media.medium`padding: ${shevy.baseSpacing(3)} 0;`}
+  ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
 SectionImage.displayName = 'SectionImage'
 
@@ -51,17 +51,24 @@ export const SectionImageWithCopyText = styled(WYSIWYG)`
 SectionImageWithCopyText.displayName = 'SectionImageWithCopyText'
 
 export const SectionImageWithCopy = styled.section`
-  padding: ${shevy.baseSpacing(1)};
+  padding: ${shevy.baseSpacing(2)};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ${media.small`
+    flex-direction: row;
+    justify-content: flex-start;
+  `}
 
   ${media.medium`
     padding: ${shevy.baseSpacing(4)} 0;
-    display: flex;
   `}
 `
 SectionImageWithCopy.displayName = 'SectionImageWithCopy'
 
 export const SectionCopy = styled.section`
-  padding: ${shevy.baseSpacing(1)};
+  padding: ${shevy.baseSpacing(2)};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
@@ -79,7 +86,7 @@ export const SectionCopyText = styled(WYSIWYG)`
 SectionCopyText.displayName = 'SectionCopyText'
 
 export const SectionCarousel = styled.section`
-  padding: 0 ${shevy.baseSpacing(1)};
+  padding: 0 ${shevy.baseSpacing(2)};
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
