@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
 import { media, shevy } from './theme'
-import { P, WYSIWYG } from './Typography'
+import { H1, P, WYSIWYG } from './Typography'
+
+export const ProjectTitle = styled(H1)`
+  ${media.medium`max-width: 60%;`}
+`
+ProjectTitle.displayName = 'ProjectTitle'
 
 export const ProjectIntro = styled.div`
   ${media.medium`flex: 1;`}
@@ -47,7 +52,7 @@ ProjectHeader.displayName = 'ProjectHeader'
 
 export const ProjectMetaContainer = styled.dl`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 
   ${media.medium`
     display: block;
@@ -60,6 +65,9 @@ ProjectMetaContainer.displayName = 'ProjectMetaContainer'
 
 export const ProjectMeta = styled.div`
   margin: ${shevy.baseSpacing(0.75)} 0 0;
+  width: ${shevy.baseSpacing(10)};
+
+  ${media.medium`width: auto;`}
 `
 ProjectMeta.displayName = 'ProjectMeta'
 

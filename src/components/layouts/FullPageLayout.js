@@ -8,6 +8,7 @@ import { Helmet } from '../Helmet'
 import { Footer, Main, Wrapper } from '../Chrome'
 import { CondensedLogo } from '../Logo'
 import { Branding, BrandingMotto } from '../Branding'
+import { MainMenu, MainMenuItem } from '../MainMenu'
 
 export class FullPageLayout extends React.Component {
   render() {
@@ -46,6 +47,11 @@ export class FullPageLayout extends React.Component {
                             {data.site.siteMetadata.title}
                           </BrandingMotto>
                         </Link>
+
+                        <MainMenu>
+                          <MainMenuItem to="/#about">About</MainMenuItem>
+                          <MainMenuItem to="/#projects">Projects</MainMenuItem>
+                        </MainMenu>
                       </Branding>
 
                       <Main>{this.props.children}</Main>

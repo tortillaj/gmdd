@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 
 import {
   FullPageLayout,
-  H1,
   H2,
   Inset,
   InsetInner,
@@ -17,6 +16,7 @@ import {
   ProjectMeta,
   ProjectMetaLabel,
   ProjectMetaContent,
+  ProjectTitle,
   Sections,
   SectionCarousel,
   SectionCopy,
@@ -29,10 +29,8 @@ import {
 
 const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
   <FullPageLayout title={contentfulProject.client.name}>
-    {console.log(contentfulProject)}
-
     <Inset>
-      <H1>{contentfulProject.client.name}</H1>
+      <ProjectTitle>{contentfulProject.client.name}</ProjectTitle>
 
       <ProjectHeader>
         <ProjectIntro>
@@ -53,9 +51,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Industry</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.client.industry.map(industry => (
-                  <P key={industry}>{industry}</P>
-                ))}
+                {contentfulProject.client.industry.map(industry => <P key={industry}>{industry}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -64,9 +60,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.timeline.map(time => (
-                  <P key={time}>{time}</P>
-                ))}
+                {contentfulProject.timeline.map(time => <P key={time}>{time}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -75,20 +69,16 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Platform</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.platform.map(format => (
-                  <P key={format}>{format}</P>
-                ))}
+                {contentfulProject.platform.map(format => <P key={format}>{format}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
-{console.log(contentfulProject)}
+          {console.log(contentfulProject)}
           {contentfulProject.technology && (
             <ProjectMeta>
               <ProjectMetaLabel>Technology</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.technology.map(tech => (
-                  <P key={tech}>{tech}</P>
-                ))}
+                {contentfulProject.technology.map(tech => <P key={tech}>{tech}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -97,9 +87,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             <ProjectMeta>
               <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.deliverables.map(deliverable => (
-                  <P key={deliverable}>{deliverable}</P>
-                ))}
+                {contentfulProject.deliverables.map(deliverable => <P key={deliverable}>{deliverable}</P>)}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
@@ -107,88 +95,84 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
       </ProjectHeader>
     </Inset>
 
-{contentfulProject.sections && (
-    <Sections>
-      {contentfulProject.sections.map(section => {
-        if (section.internal) {
-          switch (section.internal.type) {
-            case 'ContentfulSectionImage': {
-              return (
-                <SectionImage key={section.id}>
-                  <Inset>
-                    <Img
-                      fluid={section.image.fluid}
-                      alt={section.image.title}
-                      longdesc={section.image.description}
-                    />
-                  </Inset>
-                </SectionImage>
-              )
-            }
-            case 'ContentfulSectionCopy': {
-              return (
-                <SectionCopy key={section.id}>
-                  <Inset>
-                    <InsetInner>
-                      <H2 align="center">{section.title}</H2>
-                      <SectionCopyText
-                        dangerouslySetInnerHTML={{
-                          __html: section.copy.childMarkdownRemark.html,
-                        }}
-                      />
-                    </InsetInner>
-                  </Inset>
-                </SectionCopy>
-              )
-            }
-            case 'ContentfulSectionCarousel': {
-              return (
-                <SectionCarousel key={section.id}>
-                  {section.images.map(image => (
-                    <img
-                      key={image.resize.src}
-                      src={image.resize.src}
-                      alt={image.title}
-                      height={image.height}
-                      longdesc={image.description}
-                    />
-                  ))}
-                </SectionCarousel>
-              )
-            }
-            case 'ContentfulSectionImageWithCopy': {
-              return (
-                <Inset key={section.id}>
-                  <InsetInner>
-                    <SectionImageWithCopy>
-                      <SectionImageWithCopyImage
-                        position={section.imagePosition.imagePosition.toLowerCase()}
-                        fixed={section.image.fixed}
-                        alt={section.image.title}
-                        longdesc={section.image.description}
-                      />
-                      <SectionImageWithCopyText>
-                        <H2>{section.title}</H2>
-                        <div
+    {contentfulProject.sections && (
+      <Sections>
+        {contentfulProject.sections.map(section => {
+          if (section.internal) {
+            switch (section.internal.type) {
+              case 'ContentfulSectionImage': {
+                return (
+                  <SectionImage key={section.id}>
+                    <Inset>
+                      <Img fluid={section.image.fluid} alt={section.image.title} longdesc={section.image.description} />
+                    </Inset>
+                  </SectionImage>
+                )
+              }
+              case 'ContentfulSectionCopy': {
+                return (
+                  <SectionCopy key={section.id}>
+                    <Inset>
+                      <InsetInner>
+                        <H2 align="center">{section.title}</H2>
+                        <SectionCopyText
                           dangerouslySetInnerHTML={{
                             __html: section.copy.childMarkdownRemark.html,
                           }}
                         />
-                      </SectionImageWithCopyText>
-                    </SectionImageWithCopy>
-                  </InsetInner>
-                </Inset>
-              )
+                      </InsetInner>
+                    </Inset>
+                  </SectionCopy>
+                )
+              }
+              case 'ContentfulSectionCarousel': {
+                return (
+                  <SectionCarousel key={section.id}>
+                    {section.images.map(image => (
+                      <img
+                        key={image.resize.src}
+                        src={image.resize.src}
+                        alt={image.title}
+                        height={image.height}
+                        longdesc={image.description}
+                      />
+                    ))}
+                  </SectionCarousel>
+                )
+              }
+              case 'ContentfulSectionImageWithCopy': {
+                return (
+                  <Inset key={section.id}>
+                    <InsetInner>
+                      <SectionImageWithCopy>
+                        <SectionImageWithCopyImage
+                          position={section.imagePosition.imagePosition.toLowerCase()}
+                          fixed={section.image.fixed}
+                          alt={section.image.title}
+                          longdesc={section.image.description}
+                        />
+                        <SectionImageWithCopyText>
+                          <H2>{section.title}</H2>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: section.copy.childMarkdownRemark.html,
+                            }}
+                          />
+                        </SectionImageWithCopyText>
+                      </SectionImageWithCopy>
+                    </InsetInner>
+                  </Inset>
+                )
+              }
+              default:
+                return null
             }
-            default:
-              return null
+          } else {
+            return null
           }
-        } else {
-          return null
-        }
-      })}
-    </Sections>
-  )}
+        })}
+      </Sections>
+    )}
   </FullPageLayout>
 )
 

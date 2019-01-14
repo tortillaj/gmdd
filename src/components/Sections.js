@@ -69,6 +69,7 @@ SectionImageWithCopy.displayName = 'SectionImageWithCopy'
 
 export const SectionCopy = styled.section`
   padding: ${shevy.baseSpacing(2)};
+  background-color: ${themeValue('colors.secondary.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `

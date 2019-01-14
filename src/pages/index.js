@@ -36,7 +36,7 @@ const IndexPage = ({
     <Main>
       <Inset>
         <Container>
-          <ContainerTitle>About</ContainerTitle>
+          <ContainerTitle id="about">About</ContainerTitle>
 
           <ContainerContent>
             <Callout>
@@ -49,7 +49,7 @@ const IndexPage = ({
         </Container>
 
         <Container>
-          <ContainerTitle>Projects</ContainerTitle>
+          <ContainerTitle id="projects">Projects</ContainerTitle>
 
           <ContainerContent>
             <ProjectList>

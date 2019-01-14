@@ -8,7 +8,6 @@ import { H3 } from './Typography'
 export const ProjectListItem = styled.li`
   margin-top: ${shevy.baseSpacing(1)};
   padding-bottom: ${shevy.baseSpacing(1)};
-  /* border-bottom: 1px solid ${themeValue('colors.secondary.pale')}; */
 
   &:last-child {
     border: none;
@@ -34,7 +33,7 @@ ProjectListName.displayName = 'ProjectListName'
 export const ProjectListHeader = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${shevy.baseSpacing(1)};
+  margin-bottom: ${shevy.baseSpacing(0.5)};
 
   ${media.medium`
     align-items: center;
