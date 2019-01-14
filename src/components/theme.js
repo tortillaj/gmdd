@@ -31,22 +31,26 @@ const white = '#ffffff'
 
 const colors = {
   primary: {
-    base: '#2A6437',
-    interaction: '#0E4119',
-    highlight: '#64B275',
-    pale: '#79B285',
+    base: '#009A0C',
+    interaction: '#006407',
+    highlight: '#33CD3D',
+    pale: '#5CCD63',
   },
   secondary: {
-    pale: '#E7E7E7',
     base: '#9A9A9A',
     interaction: '#0B2E35',
     highlight: '#C8C8C8',
+    pale: '#E7E7E7',
   },
   accent: {
-    base: '#e8bb45',
-    interaction: '#e8b11f',
-    highlight: '#f2d997',
-    pale: '#f3e2b4',
+    // base: '#FFC52D',
+    // interaction: '#FFC52D',
+    // highlight: '#FFD361',
+    // pale: '#FFDF8B',
+    base: '#E3791F',
+    interaction: '#E0802E',
+    highlight: '#EF984D',
+    pale: '#EFAB71',
   },
   warning: {
     base: '#d00',
@@ -92,7 +96,7 @@ export const theme = {
   sizes,
   typography,
   layout: {
-    siteWidth: shevy.baseSpacing(55),
+    siteWidth: shevy.baseSpacing(58),
   },
 }
 
