@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
   html {
     /* 1rem = 12px @ base browser settings */
-    font-size: 75%;
+    font-size: 62.5%;
     width: 100%;
     height: 100%;
     ${media.medium`

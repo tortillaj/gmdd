@@ -31,10 +31,10 @@ const white = '#ffffff'
 
 const colors = {
   primary: {
-    base: '#009A0C',
-    interaction: '#006407',
-    highlight: '#33CD3D',
-    pale: '#5CCD63',
+    base: '#458B27',
+    interaction: '#498b42',
+    highlight: '#22BE55',
+    pale: '#A4F1BD',
   },
   secondary: {
     base: '#9A9A9A',
@@ -43,14 +43,14 @@ const colors = {
     pale: '#E7E7E7',
   },
   accent: {
-    // base: '#FFC52D',
-    // interaction: '#FFC52D',
-    // highlight: '#FFD361',
-    // pale: '#FFDF8B',
-    base: '#E3791F',
-    interaction: '#E0802E',
-    highlight: '#EF984D',
-    pale: '#EFAB71',
+    base: '#FFC52D',
+    interaction: '#FFC52D',
+    highlight: '#FFD361',
+    pale: '#FFDF8B',
+    // base: '#E3791F',
+    // interaction: '#E0802E',
+    // highlight: '#EF984D',
+    // pale: '#EFAB71',
   },
   warning: {
     base: '#d00',

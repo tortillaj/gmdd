@@ -6,26 +6,27 @@ import { Inset } from './Inset'
 import { P } from './Typography'
 
 export const BrandingMotto = styled(P)`
-  display: inline-block;
+  display: none;
   font-size: ${shevy.body.fontSize};
   line-height: 1;
   width: ${shevy.baseSpacing(8.5)};
   font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 0 ${shevy.baseSpacing(0.5)};
-  color: ${themeValue('colors.primary.highlight')};
+  color: ${themeValue('colors.foreground')};
+  ${media.medium`display: inline-block;`};
 `
 BrandingMotto.displayName = 'BrandingMotto'
 
 const BrandingWrapper = styled.header`
   margin-bottom: ${shevy.baseSpacing(4)};
-  ${props => !props.large && css`background-color: ${themeValue('colors.foreground')};`}
+  
+  ${props => !props.large && css`border-top: 6px solid ${themeValue('colors.foreground')};`};
 `
 BrandingWrapper.displayName = 'BrandingWrapper'
 
 const BrandingInner = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   padding-top: ${props =>
     props.large ? shevy.baseSpacing(2) : shevy.baseSpacing(0.5)};
@@ -43,8 +44,7 @@ const BrandingInner = styled.div`
   ${props =>
     props.large &&
     css`
-      border-top: 3px solid ${themeValue('colors.foreground')};
-      display: flex;
+      border-top: 6px solid ${themeValue('colors.foreground')};
       flex-direction: column;
       justify-content: center;
       align-items: center;

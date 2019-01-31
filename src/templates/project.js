@@ -56,15 +56,6 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
             </ProjectMeta>
           )}
 
-          {contentfulProject.timeline && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {contentfulProject.timeline.map(time => <P key={time}>{time}</P>)}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
-
           {contentfulProject.platform && (
             <ProjectMeta>
               <ProjectMetaLabel>Platform</ProjectMetaLabel>
@@ -73,7 +64,7 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
               </ProjectMetaContent>
             </ProjectMeta>
           )}
-          {console.log(contentfulProject)}
+
           {contentfulProject.technology && (
             <ProjectMeta>
               <ProjectMetaLabel>Technology</ProjectMetaLabel>
@@ -91,6 +82,16 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
               </ProjectMetaContent>
             </ProjectMeta>
           )}
+
+          {contentfulProject.timeline && (
+            <ProjectMeta>
+              <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
+              <ProjectMetaContent>
+                {contentfulProject.timeline.map(time => <P key={time}>{time}</P>)}
+              </ProjectMetaContent>
+            </ProjectMeta>
+          )}
+
         </ProjectMetaContainer>
       </ProjectHeader>
     </Inset>

@@ -53,7 +53,6 @@ export const ProjectView = styled.div`
   padding: ${shevy.baseSpacing(0.25)} ${shevy.baseSpacing(0.75)};
 
   &::after {
-    font-family: sans;
     content: '\u276F';
     display: inline-block;
     margin-left: -${shevy.baseSpacing(0.25)};

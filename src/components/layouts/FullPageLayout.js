@@ -40,7 +40,7 @@ export class FullPageLayout extends React.Component {
                       <Branding>
                         <Link to="/">
                           <CondensedLogo
-                            color={theme.colors.primary.highlight}
+                            color={theme.colors.foreground}
                             height={24}
                           />
                           <BrandingMotto>
