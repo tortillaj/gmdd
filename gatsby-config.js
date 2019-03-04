@@ -1,13 +1,5 @@
 const path = require('path')
 
-let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
-
-console.log(`Using environment config: '${activeEnv}'`)
-
-require('dotenv').config({
-  path: `.env.${activeEnv}`,
-})
-
 module.exports = {
   siteMetadata: {
     title: 'Green Mountain Design & Development',
@@ -34,13 +26,6 @@ module.exports = {
       options: {
         name: 'projects',
         path: path.join(__dirname, 'src', 'projects'),
-      },
-    },
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
     'gatsby-remark-copy-linked-files',
