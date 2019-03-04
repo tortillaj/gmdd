@@ -6,8 +6,8 @@ cache:
   directories:
   - node_modules
 before_script:
-- yarn i -g gatsby
-- yarn i
+- npm i -g gatsby
+- yarn install
 script:
 - yarn build
 before_install:
