@@ -8,6 +8,7 @@ import {
   Inset,
   P,
   ProjectHeader,
+  ProjectInfo,
   ProjectIntro,
   ProjectIntroInfo,
   ProjectIntroLead,
@@ -27,87 +28,88 @@ import {
 } from '../components'
 
 export default ({ data: { markdownRemark } }) => (
-  <FullPageLayout title={markdownRemark.frontmatter.name}>
-    <Inset>
-      <ProjectTitle>
-        {markdownRemark.frontmatter.client}
-      </ProjectTitle>
+  <FullPageLayout title={markdownRemark.frontmatter.name} headerBackgroundColor="colors.primary.interaction">
+    <ProjectHeader backgroundColor="colors.primary.base">
+      <Inset>
+        <ProjectTitle>
+          {markdownRemark.frontmatter.client}
+        </ProjectTitle>
 
-      <ProjectHeader>
-        <ProjectIntro>
-          <ProjectIntroLead>
-            {markdownRemark.frontmatter.summary}
-          </ProjectIntroLead>
-          <ProjectIntroInfo
-            dangerouslySetInnerHTML={{
-              __html: markdownRemark.html,
-            }}
-          />
-        </ProjectIntro>
+        <ProjectInfo>
+          <ProjectIntro>
+            <ProjectIntroLead>
+              {markdownRemark.frontmatter.summary}
+            </ProjectIntroLead>
+            <ProjectIntroInfo
+              dangerouslySetInnerHTML={{
+                __html: markdownRemark.html,
+              }}
+            />
+          </ProjectIntro>
 
-        <ProjectMetaContainer>
-          {markdownRemark.frontmatter.industry && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Industry</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {markdownRemark.frontmatter.industry.map(industry => (
-                  <P key={industry}>{industry}</P>
-                ))}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
+          <ProjectMetaContainer>
+            {markdownRemark.frontmatter.industry && (
+              <ProjectMeta>
+                <ProjectMetaLabel>Industry</ProjectMetaLabel>
+                <ProjectMetaContent>
+                  {markdownRemark.frontmatter.industry.map(industry => (
+                    <P key={industry}>{industry}</P>
+                  ))}
+                </ProjectMetaContent>
+              </ProjectMeta>
+            )}
 
-          {markdownRemark.frontmatter.platform && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Platform</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {markdownRemark.frontmatter.platform.map(format => (
-                  <P key={format}>{format}</P>
-                ))}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
+            {markdownRemark.frontmatter.platform && (
+              <ProjectMeta>
+                <ProjectMetaLabel>Platform</ProjectMetaLabel>
+                <ProjectMetaContent>
+                  {markdownRemark.frontmatter.platform.map(format => (
+                    <P key={format}>{format}</P>
+                  ))}
+                </ProjectMetaContent>
+              </ProjectMeta>
+            )}
 
-          {markdownRemark.frontmatter.technology && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Technology</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {markdownRemark.frontmatter.technology.map(tech => (
-                  <P key={tech}>{tech}</P>
-                ))}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
+            {markdownRemark.frontmatter.technology && (
+              <ProjectMeta>
+                <ProjectMetaLabel>Technology</ProjectMetaLabel>
+                <ProjectMetaContent>
+                  {markdownRemark.frontmatter.technology.map(tech => (
+                    <P key={tech}>{tech}</P>
+                  ))}
+                </ProjectMetaContent>
+              </ProjectMeta>
+            )}
 
-          {markdownRemark.frontmatter.deliverables && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {markdownRemark.frontmatter.deliverables.map(deliverable => (
-                  <P key={deliverable}>{deliverable}</P>
-                ))}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
+            {markdownRemark.frontmatter.deliverables && (
+              <ProjectMeta>
+                <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
+                <ProjectMetaContent>
+                  {markdownRemark.frontmatter.deliverables.map(deliverable => (
+                    <P key={deliverable}>{deliverable}</P>
+                  ))}
+                </ProjectMetaContent>
+              </ProjectMeta>
+            )}
 
-          {markdownRemark.frontmatter.timeline && (
-            <ProjectMeta>
-              <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
-              <ProjectMetaContent>
-                {markdownRemark.frontmatter.timeline.map(time => (
-                  <P key={time}>{time}</P>
-                ))}
-              </ProjectMetaContent>
-            </ProjectMeta>
-          )}
-        </ProjectMetaContainer>
-      </ProjectHeader>
-    </Inset>
+            {markdownRemark.frontmatter.timeline && (
+              <ProjectMeta>
+                <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
+                <ProjectMetaContent>
+                  {markdownRemark.frontmatter.timeline.map(time => (
+                    <P key={time}>{time}</P>
+                  ))}
+                </ProjectMetaContent>
+              </ProjectMeta>
+            )}
+          </ProjectMetaContainer>
+        </ProjectInfo>
+      </Inset>
+    </ProjectHeader>
 
     {markdownRemark.frontmatter.sections && (
       <Sections>
         {markdownRemark.frontmatter.sections.map((section, id) => {
-          console.log(section)
           switch (section.type) {
             case 'SectionImage': {
               return (
@@ -132,7 +134,6 @@ export default ({ data: { markdownRemark } }) => (
               )
             }
             case 'Carousel': {
-              console.log('carousel', section)
               return (
                 <SectionCarousel key={id}>
                   {section.carousel.map(image => (

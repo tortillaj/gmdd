@@ -14,7 +14,7 @@ import {
 } from './Inset'
 
 export const Sections = styled.div`
-  margin: ${shevy.baseSpacing(4)} 0 0;
+  margin: 0;
 `
 Sections.displayName = 'Sections'
 
@@ -26,7 +26,7 @@ Sections.displayName = 'Sections'
 //
 const SectionImageContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
-  background-color: ${themeValue('colors.secondary.pale')};
+  background-color: ${themeValue('colors.grayscale.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
@@ -127,7 +127,7 @@ export const SectionImageWithCopy = ({ children, ...rest }) => (
 //
 const SectionCopyContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
-  background-color: ${themeValue('colors.secondary.pale')};
+  background-color: ${themeValue('colors.grayscale.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `

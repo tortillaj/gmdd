@@ -1,14 +1,24 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import {
   media,
   shevy,
+  themeValue,
 } from './theme'
 import {
   H1,
   P,
   WYSIWYG,
 } from './Typography'
+
+export const ProjectHeader = styled.header`
+  ${props => props.backgroundColor && css`background-color: ${themeValue(props.backgroundColor)}`};
+  padding: ${shevy.baseSpacing(3)} 0;
+  color: ${themeValue('colors.always.white')};
+  
+  ${media.large`padding: ${shevy.baseSpacing(7)} 0 ${shevy.baseSpacing(5)};`};
+`
+ProjectHeader.displayName = 'ProjectHeader'
 
 export const ProjectTitle = styled(H1)`
   ${media.medium`max-width: 60%;`}
@@ -41,7 +51,7 @@ export const ProjectIntroInfo = styled(WYSIWYG)`
 `
 ProjectIntroInfo.displayName = 'ProjectIntroInfo'
 
-export const ProjectHeader = styled.div`
+export const ProjectInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: ${shevy.baseSpacing(2)};
@@ -52,7 +62,7 @@ export const ProjectHeader = styled.div`
     margin-top: ${shevy.baseSpacing(3)};
   `}
 `
-ProjectHeader.displayName = 'ProjectHeader'
+ProjectInfo.displayName = 'ProjectInfo'
 
 export const ProjectMetaContainer = styled.dl`
   display: flex;

@@ -43,7 +43,7 @@ const IndexPage = (
             <Callout>
               Located in beautiful Vermont,{' '}
               <Em>Green Mountain Design &amp; Development</Em> is a custom web
-              design and development shop. We excel in identifying and defining
+              design and development agency. We excel in identifying and defining
               the unique qualities of our clients. Let us help you succeed.
             </Callout>
           </ContainerContent>

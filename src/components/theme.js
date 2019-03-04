@@ -31,12 +31,22 @@ const white = '#ffffff'
 
 const colors = {
   primary: {
-    base: '#458B27',
-    interaction: '#498b42',
-    highlight: '#22BE55',
-    pale: '#A4F1BD',
+    base: '#3241B0',
+    interaction: '#101C72',
+    highlight: '#6471D7',
+    pale: '#838DD7',
+    // base: '#458B27',
+    // interaction: '#498b42',
+    // highlight: '#22BE55',
+    // pale: '#A4F1BD',
   },
   secondary: {
+    base: '#FF9E2D',
+    interaction: '#A6600F',
+    highlight: '#FFB662',
+    pale: '#FFC98C',
+  },
+  grayscale: {
     base: '#9A9A9A',
     interaction: '#0B2E35',
     highlight: '#C8C8C8',
@@ -89,7 +99,7 @@ export const theme = {
   colors,
   overlayColors: {
     primary: hexToRGB(colors.primary.base, 0.9),
-    secondary: hexToRGB(colors.secondary.base, 0.9),
+    secondary: hexToRGB(colors.grayscale.base, 0.9),
     accent: hexToRGB(colors.accent.base, 0.9),
     background: hexToRGB(colors.background, 0.9),
   },

@@ -1,16 +1,13 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { media, shevy, themeValue } from './theme'
+import { media, shevy } from './theme'
 
 export const MainMenuItem = styled(Link)`
   font-weight: 600;
-  color: ${themeValue('colors.foreground')};
+  color: inherit;
   text-transform: uppercase;
-
-  &:hover {
-    color: ${themeValue('colors.primary.base')};
-  }
+  text-decoration: none;
 `
 MainMenuItem.displayName = 'MainMenuItem'
 

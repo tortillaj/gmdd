@@ -12,7 +12,7 @@ import { MainMenu, MainMenuItem } from '../MainMenu'
 
 export class FullPageLayout extends React.Component {
   render() {
-    const { title } = this.props
+    const { title, headerBackgroundColor } = this.props
 
     return (
       <ThemeProvider theme={theme}>
@@ -37,10 +37,10 @@ export class FullPageLayout extends React.Component {
                   <Fragment>
                     <Helmet title={title} />
                     <Wrapper>
-                      <Branding>
+                      <Branding backgroundColor={headerBackgroundColor}>
                         <Link to="/">
                           <CondensedLogo
-                            color={theme.colors.foreground}
+                            color={theme.colors.always.white}
                             height={24}
                           />
                           <BrandingMotto>

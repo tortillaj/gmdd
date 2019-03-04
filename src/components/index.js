@@ -1,4 +1,5 @@
 export * from './theme'
+export * from './Background'
 export * from './Branding'
 export * from './Callout'
 export * from './Chrome'
