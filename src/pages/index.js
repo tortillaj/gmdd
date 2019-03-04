@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -28,67 +28,94 @@ const IndexPage = (
   {
     data: { allMarkdownRemark: { edges } }
   },
-) => (
-  <BlankLayout>
-    <Branding large>
-      <Logo/>
-    </Branding>
+) => {
 
-    <Main>
-      <Inset>
-        <Container>
-          <ContainerTitle id="about">About</ContainerTitle>
+  const [isMobile, setMobile] = useState(false)
 
-          <ContainerContent>
-            <Callout>
-              Located in beautiful Vermont,{' '}
-              <Em>Green Mountain Design &amp; Development</Em> is a custom web
-              design and development agency. We excel in identifying and defining
-              the unique qualities of our clients. Let us help you succeed.
-            </Callout>
-          </ContainerContent>
-        </Container>
+  const handleResize = () => {
+    if (window.innerWidth > 700) {
+      setMobile(false)
+    } else {
+      setMobile(true)
+    }
 
-        <Container>
-          <ContainerTitle id="projects">Projects</ContainerTitle>
+    console.log(isMobile)
+  }
 
-          <ContainerContent>
-            <ProjectList>
-              {edges.map(project => {
-                const fm = project.node.frontmatter
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize()
 
-                return (
-                  <ProjectListItem
-                    key={project.node.id}
-                  >
-                    <ProjectLink to={`/${fm.route}`}>
-                      <ProjectListHeader>
-                        <ProjectListName>{fm.client}</ProjectListName>
-                        <ProjectView>View the project</ProjectView>
-                      </ProjectListHeader>
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
 
-                      <ProjectCarousel>
-                        {fm.carousel.map(image => (
-                          <ProjectCarouselItem
-                            key={image.childImageSharp.fixed.src}
-                          >
-                            <Img fixed={image.childImageSharp.fixed}/>
-                          </ProjectCarouselItem>
-                        ))}
-                      </ProjectCarousel>
-                    </ProjectLink>
-                  </ProjectListItem>
-                )
-              })}
-            </ProjectList>
-          </ContainerContent>
-        </Container>
-      </Inset>
-    </Main>
+  return (
+    <BlankLayout>
+      <Branding large>
+        <Logo/>
+      </Branding>
 
-    <Footer/>
-  </BlankLayout>
-)
+      <Main>
+        <Inset>
+          <Container>
+            <ContainerTitle id="about">About</ContainerTitle>
+
+            <ContainerContent>
+              <Callout>
+                Located in beautiful Vermont,{' '}
+                <Em>Green Mountain Design &amp; Development</Em> is a custom web
+                design and development agency. We excel in identifying and defining
+                the unique qualities of our clients. Let us help you succeed.
+              </Callout>
+            </ContainerContent>
+          </Container>
+
+          <Container>
+            <ContainerTitle id="projects">Projects</ContainerTitle>
+
+            <ContainerContent>
+              <ProjectList>
+                {edges.map(project => {
+                  const fm = project.node.frontmatter
+
+                  return (
+                    <ProjectListItem
+                      key={project.node.id}
+                    >
+                      <ProjectLink to={`/${fm.route}`}>
+                        <ProjectListHeader>
+                          <ProjectListName>{fm.client}</ProjectListName>
+
+                          {!isMobile && (
+                            <ProjectView>View the project</ProjectView>
+                          )}
+                        </ProjectListHeader>
+
+                        <ProjectCarousel>
+                          {fm.carousel.map(image => (
+                            <ProjectCarouselItem
+                              key={image.childImageSharp.fixed.src}
+                            >
+                              <Img fixed={image.childImageSharp.fixed}/>
+                            </ProjectCarouselItem>
+                          ))}
+                        </ProjectCarousel>
+                      </ProjectLink>
+                    </ProjectListItem>
+                  )
+                })}
+              </ProjectList>
+            </ContainerContent>
+          </Container>
+        </Inset>
+      </Main>
+
+      <Footer/>
+    </BlankLayout>
+  )
+}
 
 export default IndexPage
 

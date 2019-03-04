@@ -19,11 +19,12 @@
     "gatsby-transformer-remark": "^2.1.17",
     "gatsby-transformer-sharp": "^2.1.9",
     "gatsby-transformer-yaml": "^2.1.8",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
     "shevyjs": "^1.1.0",
     "styled-components": "^4.1.1",
+    "styled-icons": "^7.4.0",
     "styled-reset": "^1.6.4"
   },
   "keywords": [

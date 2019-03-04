@@ -35,7 +35,7 @@ export const ProjectListHeader = styled.div`
   flex-direction: column;
   margin-bottom: ${shevy.baseSpacing(0.5)};
 
-  ${media.medium`
+  ${media.small`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
