@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import {
   BlankLayout,
@@ -23,14 +24,14 @@ import {
 } from '../components'
 import { Logo } from '../components/Logo'
 
-const IndexPage = ({
-  data: {
-    allContentfulProject: { edges },
+const IndexPage = (
+  {
+    data: { allMarkdownRemark: { edges } }
   },
-}) => (
+) => (
   <BlankLayout>
     <Branding large>
-      <Logo />
+      <Logo/>
     </Branding>
 
     <Main>
@@ -54,24 +55,24 @@ const IndexPage = ({
           <ContainerContent>
             <ProjectList>
               {edges.map(project => {
+                const fm = project.node.frontmatter
+
                 return (
-                  <ProjectListItem key={project.node.id}>
-                    <ProjectLink to={`project/${project.node.slug}`}>
+                  <ProjectListItem
+                    key={project.node.id}
+                  >
+                    <ProjectLink to={`/${fm.route}`}>
                       <ProjectListHeader>
-                        <ProjectListName>
-                          {project.node.client.name}
-                        </ProjectListName>
+                        <ProjectListName>{fm.client}</ProjectListName>
                         <ProjectView>View the project</ProjectView>
                       </ProjectListHeader>
 
                       <ProjectCarousel>
-                        {project.node.carousel.map(image => (
-                          <ProjectCarouselItem key={image.resize.src}>
-                            <img
-                              src={image.resize.src}
-                              alt={image.title}
-                              height={image.height}
-                            />
+                        {fm.carousel.map(image => (
+                          <ProjectCarouselItem
+                            key={image.childImageSharp.fixed.src}
+                          >
+                            <Img fixed={image.childImageSharp.fixed}/>
                           </ProjectCarouselItem>
                         ))}
                       </ProjectCarousel>
@@ -85,34 +86,30 @@ const IndexPage = ({
       </Inset>
     </Main>
 
-    <Footer />
+    <Footer/>
   </BlankLayout>
 )
 
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
-    allContentfulProject(sort: { fields: projectDate, order: DESC }) {
+  query projects {
+    allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/md/"}},
+      sort: {fields: frontmatter___order, order:ASC})
+    {
       edges {
         node {
           id
-          title
-          slug
-          carousel {
+          frontmatter {
             title
-            description
-            resize(width: 0, height: 200, resizingBehavior: NO_CHANGE) {
-              height
-              width
-              src
-            }
-          }
-          client {
-            name
-            about {
-              childMarkdownRemark {
-                html
+            client
+            route
+            carousel {
+              childImageSharp {
+                fixed(height:246) {
+                  ...GatsbyImageSharpFixed
+                }
               }
             }
           }

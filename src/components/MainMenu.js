@@ -7,7 +7,7 @@ export const MainMenuItem = styled(Link)`
   font-weight: 600;
   color: ${themeValue('colors.foreground')};
   text-transform: uppercase;
-  
+
   &:hover {
     color: ${themeValue('colors.primary.base')};
   }

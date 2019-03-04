@@ -1,43 +1,84 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
 
-import { media, shevy, themeValue } from './theme'
+import {
+  media,
+  shevy,
+  themeValue,
+} from './theme'
 import { WYSIWYG } from './Typography'
+import {
+  Inset,
+  InsetInner,
+} from './Inset'
 
 export const Sections = styled.div`
   margin: ${shevy.baseSpacing(4)} 0 0;
 `
 Sections.displayName = 'Sections'
 
-export const SectionImage = styled.section`
-  padding: ${shevy.baseSpacing(2)};
+//
+//
+//
+// Section - Image
+//
+//
+const SectionImageContainer = styled.section`
+  padding: ${shevy.baseSpacing(2)} 0;
   background-color: ${themeValue('colors.secondary.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
-SectionImage.displayName = 'SectionImage'
+SectionImageContainer.displayName = 'SectionImageContainer'
 
+export const SectionImage = ({ children, ...rest }) => (
+  <SectionImageContainer {...rest}>
+    <Inset>
+      {children}
+    </Inset>
+  </SectionImageContainer>
+)
+
+//
+//
+//
+// Section - Image with Copy
+//
+//
 export const SectionImageWithCopyImage = styled(Img)`
   margin: 0 auto;
+  max-width: 100% !important;
+  order: 1;
+  
   ${props =>
-    props.position === 'right'
-      ? css`
-          order: 1;
-          ${media.medium`margin-left: ${shevy.baseSpacing(2)};`}
+  props.position === 'right'
+    ? css`
+          ${media.small`
+            margin-left: ${shevy.baseSpacing(2)};
+            order: 1;
+          `}
         `
-      : css`
-          order: 0;
-          ${media.medium`margin-right: ${shevy.baseSpacing(2)};`}
+    : css`
+          ${media.small`
+            margin-right: ${shevy.baseSpacing(2)};
+            order: 0;
+           `}
         `}
 `
 SectionImageWithCopyImage.displayName = 'SectionImageWithCopyImage'
 
 export const SectionImageWithCopyText = styled(WYSIWYG)`
-  padding: ${shevy.baseSpacing(1)} 0;
+  padding: 0 0 ${shevy.baseSpacing(1)} 0;
+  flex: 1;
+  text-align: center;
+  
+  ${media.small`
+    padding: 0;
+    text-align: left;
+  `};
 
   ${media.medium`
-    padding: ${shevy.baseSpacing(2)} 0;
-    flex: 1;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -50,8 +91,8 @@ export const SectionImageWithCopyText = styled(WYSIWYG)`
 `
 SectionImageWithCopyText.displayName = 'SectionImageWithCopyText'
 
-export const SectionImageWithCopy = styled.section`
-  padding: ${shevy.baseSpacing(2)};
+const SectionImageWithCopyInner = styled.section`
+  padding: ${shevy.baseSpacing(2)} 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,21 +100,38 @@ export const SectionImageWithCopy = styled.section`
   ${media.small`
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
   `}
 
   ${media.medium`
     padding: ${shevy.baseSpacing(4)} 0;
   `}
 `
-SectionImageWithCopy.displayName = 'SectionImageWithCopy'
+SectionImageWithCopyInner.displayName = 'SectionImageWithCopyInner'
 
-export const SectionCopy = styled.section`
-  padding: ${shevy.baseSpacing(2)};
+export const SectionImageWithCopy = ({ children, ...rest }) => (
+  <Inset>
+    <InsetInner>
+      <SectionImageWithCopyInner {...rest}>
+        {children}
+      </SectionImageWithCopyInner>
+    </InsetInner>
+  </Inset>
+)
+
+//
+//
+//
+// Section - Copy
+//
+//
+const SectionCopyContainer = styled.section`
+  padding: ${shevy.baseSpacing(2)} 0;
   background-color: ${themeValue('colors.secondary.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
-SectionCopy.displayName = 'SectionCopy'
+SectionCopyContainer.displayName = 'SectionCopyContainer'
 
 export const SectionCopyText = styled(WYSIWYG)`
   text-align: center;
@@ -86,8 +144,22 @@ export const SectionCopyText = styled(WYSIWYG)`
 `
 SectionCopyText.displayName = 'SectionCopyText'
 
+export const SectionCopy = ({ children, ...rest }) => (
+  <SectionCopyContainer {...rest}>
+    <Inset>
+      {children}
+    </Inset>
+  </SectionCopyContainer>
+)
+
+//
+//
+//
+// Section - Carousel
+//
+//
 export const SectionCarousel = styled.section`
-  padding: 0 ${shevy.baseSpacing(2)};
+  padding: 0 ${shevy.baseSpacing(2)} 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

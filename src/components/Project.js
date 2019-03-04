@@ -1,7 +1,14 @@
 import styled from 'styled-components'
 
-import { media, shevy } from './theme'
-import { H1, P, WYSIWYG } from './Typography'
+import {
+  media,
+  shevy,
+} from './theme'
+import {
+  H1,
+  P,
+  WYSIWYG,
+} from './Typography'
 
 export const ProjectTitle = styled(H1)`
   ${media.medium`max-width: 60%;`}
@@ -13,20 +20,17 @@ export const ProjectIntro = styled.div`
 `
 ProjectIntro.displayName = 'ProjectIntro'
 
-export const ProjectIntroLead = styled.div`
+export const ProjectIntroLead = styled.p`
   ${media.medium`flex: 1;`};
+   font-size: ${shevy.h4.fontSize};
+   line-height: ${shevy.h4.lineHeight};
+   margin-bottom: ${shevy.baseSpacing(1)};
 
-  p {
-    font-size: ${shevy.h4.fontSize};
-    line-height: ${shevy.h4.lineHeight};
-    margin-bottom: ${shevy.baseSpacing(1)};
-
-    ${media.medium`
-      font-size: ${shevy.h2.fontSize};
-      line-height: ${shevy.h2.lineHeight};
-      margin-bottom: ${shevy.baseSpacing(3)};
+   ${media.medium`
+     font-size: ${shevy.h2.fontSize};
+     line-height: ${shevy.h2.lineHeight};
+     margin-bottom: ${shevy.baseSpacing(3)};
     `};
-  }
 `
 ProjectIntroLead.displayName = 'ProjectIntroLead'
 
@@ -53,6 +57,7 @@ ProjectHeader.displayName = 'ProjectHeader'
 export const ProjectMetaContainer = styled.dl`
   display: flex;
   flex-wrap: wrap;
+  margin: ${shevy.baseSpacing(2)} 0 0;
 
   ${media.medium`
     display: block;
@@ -65,7 +70,9 @@ ProjectMetaContainer.displayName = 'ProjectMetaContainer'
 
 export const ProjectMeta = styled.div`
   margin: ${shevy.baseSpacing(0.75)} 0 0;
-  width: ${shevy.baseSpacing(10)};
+  width: 50%;
+  
+  ${media.small`width: ${shevy.baseSpacing(10)};`};
 
   ${media.medium`width: auto;`}
 `

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { shevy } from './theme'
 
 export const ProjectCarouselWrapper = styled.div`
-  height: ${shevy.baseSpacing(7)};
+  height: ${shevy.baseSpacing(13)};
   overflow: hidden;
   display: flex;
 `

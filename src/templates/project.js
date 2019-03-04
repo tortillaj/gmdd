@@ -6,7 +6,6 @@ import {
   FullPageLayout,
   H2,
   Inset,
-  InsetInner,
   P,
   ProjectHeader,
   ProjectIntro,
@@ -27,149 +26,145 @@ import {
   SectionImageWithCopyText,
 } from '../components'
 
-const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
-  <FullPageLayout title={contentfulProject.client.name}>
+export default ({ data: { markdownRemark } }) => (
+  <FullPageLayout title={markdownRemark.frontmatter.name}>
     <Inset>
-      <ProjectTitle>{contentfulProject.client.name}</ProjectTitle>
+      <ProjectTitle>
+        {markdownRemark.frontmatter.client}
+      </ProjectTitle>
 
       <ProjectHeader>
         <ProjectIntro>
-          <ProjectIntroLead
-            dangerouslySetInnerHTML={{
-              __html: contentfulProject.client.about.childMarkdownRemark.html,
-            }}
-          />
+          <ProjectIntroLead>
+            {markdownRemark.frontmatter.summary}
+          </ProjectIntroLead>
           <ProjectIntroInfo
             dangerouslySetInnerHTML={{
-              __html: contentfulProject.intro.childMarkdownRemark.html,
+              __html: markdownRemark.html,
             }}
           />
         </ProjectIntro>
 
         <ProjectMetaContainer>
-          {contentfulProject.client.industry && (
+          {markdownRemark.frontmatter.industry && (
             <ProjectMeta>
               <ProjectMetaLabel>Industry</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.client.industry.map(industry => <P key={industry}>{industry}</P>)}
+                {markdownRemark.frontmatter.industry.map(industry => (
+                  <P key={industry}>{industry}</P>
+                ))}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
 
-          {contentfulProject.platform && (
+          {markdownRemark.frontmatter.platform && (
             <ProjectMeta>
               <ProjectMetaLabel>Platform</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.platform.map(format => <P key={format}>{format}</P>)}
+                {markdownRemark.frontmatter.platform.map(format => (
+                  <P key={format}>{format}</P>
+                ))}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
 
-          {contentfulProject.technology && (
+          {markdownRemark.frontmatter.technology && (
             <ProjectMeta>
               <ProjectMetaLabel>Technology</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.technology.map(tech => <P key={tech}>{tech}</P>)}
+                {markdownRemark.frontmatter.technology.map(tech => (
+                  <P key={tech}>{tech}</P>
+                ))}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
 
-          {contentfulProject.deliverables && (
+          {markdownRemark.frontmatter.deliverables && (
             <ProjectMeta>
               <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.deliverables.map(deliverable => <P key={deliverable}>{deliverable}</P>)}
+                {markdownRemark.frontmatter.deliverables.map(deliverable => (
+                  <P key={deliverable}>{deliverable}</P>
+                ))}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
 
-          {contentfulProject.timeline && (
+          {markdownRemark.frontmatter.timeline && (
             <ProjectMeta>
               <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
               <ProjectMetaContent>
-                {contentfulProject.timeline.map(time => <P key={time}>{time}</P>)}
+                {markdownRemark.frontmatter.timeline.map(time => (
+                  <P key={time}>{time}</P>
+                ))}
               </ProjectMetaContent>
             </ProjectMeta>
           )}
-
         </ProjectMetaContainer>
       </ProjectHeader>
     </Inset>
 
-    {contentfulProject.sections && (
+    {markdownRemark.frontmatter.sections && (
       <Sections>
-        {contentfulProject.sections.map(section => {
-          if (section.internal) {
-            switch (section.internal.type) {
-              case 'ContentfulSectionImage': {
-                return (
-                  <SectionImage key={section.id}>
-                    <Inset>
-                      <Img fluid={section.image.fluid} alt={section.image.title} longdesc={section.image.description} />
-                    </Inset>
-                  </SectionImage>
-                )
-              }
-              case 'ContentfulSectionCopy': {
-                return (
-                  <SectionCopy key={section.id}>
-                    <Inset>
-                      <InsetInner>
-                        <H2 align="center">{section.title}</H2>
-                        <SectionCopyText
-                          dangerouslySetInnerHTML={{
-                            __html: section.copy.childMarkdownRemark.html,
-                          }}
-                        />
-                      </InsetInner>
-                    </Inset>
-                  </SectionCopy>
-                )
-              }
-              case 'ContentfulSectionCarousel': {
-                return (
-                  <SectionCarousel key={section.id}>
-                    {section.images.map(image => (
-                      <img
-                        key={image.resize.src}
-                        src={image.resize.src}
-                        alt={image.title}
-                        height={image.height}
-                        longdesc={image.description}
-                      />
-                    ))}
-                  </SectionCarousel>
-                )
-              }
-              case 'ContentfulSectionImageWithCopy': {
-                return (
-                  <Inset key={section.id}>
-                    <InsetInner>
-                      <SectionImageWithCopy>
-                        <SectionImageWithCopyImage
-                          position={section.imagePosition.imagePosition.toLowerCase()}
-                          fixed={section.image.fixed}
-                          alt={section.image.title}
-                          longdesc={section.image.description}
-                        />
-                        <SectionImageWithCopyText>
-                          <H2>{section.title}</H2>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: section.copy.childMarkdownRemark.html,
-                            }}
-                          />
-                        </SectionImageWithCopyText>
-                      </SectionImageWithCopy>
-                    </InsetInner>
-                  </Inset>
-                )
-              }
-              default:
-                return null
+        {markdownRemark.frontmatter.sections.map((section, id) => {
+          console.log(section)
+          switch (section.type) {
+            case 'SectionImage': {
+              return (
+                <SectionImage key={id}>
+                  <Img
+                    fluid={section.largeImage.src.childImageSharp.fluid}
+                    alt={section.largeImage.alt}
+                    longdesc={section.largeImage.description}
+                  />
+                </SectionImage>
+              )
             }
-          } else {
-            return null
+            case 'SectionCopy': {
+              return (
+                <SectionCopy key={id}>
+
+                  <H2 align="center">{section.title}</H2>
+                  <SectionCopyText>
+                    <P>{section.copy}</P>
+                  </SectionCopyText>
+                </SectionCopy>
+              )
+            }
+            case 'Carousel': {
+              console.log('carousel', section)
+              return (
+                <SectionCarousel key={id}>
+                  {section.carousel.map(image => (
+                    <img
+                      key={image.childImageSharp.fixed.src}
+                      src={image.childImageSharp.fixed}
+                      alt={markdownRemark.frontmatter.client}
+                    />
+                  ))}
+                </SectionCarousel>
+              )
+            }
+            case 'SectionImageWithCopy': {
+              return (
+                <SectionImageWithCopy key={id}>
+                  <SectionImageWithCopyImage
+                    position={section.imagePosition}
+                    fixed={section.smallImage.src.childImageSharp.fixed}
+                    alt={section.smallImage.alt}
+                    longdesc={section.smallImage.description}
+                  />
+                  <SectionImageWithCopyText>
+                    <H2>{section.title}</H2>
+                    <P>
+                      {section.copy}
+                    </P>
+                  </SectionImageWithCopyText>
+                </SectionImageWithCopy>
+              )
+            }
+            default:
+              return null
           }
         })}
       </Sections>
@@ -177,103 +172,45 @@ const ProjectPageTemplate = ({ data: { contentfulProject } }) => (
   </FullPageLayout>
 )
 
-export default ProjectPageTemplate
-
 export const pageQuery = graphql`
-  fragment SectionImageFragment on ContentfulSectionImage {
-    internal {
-      type
-    }
-    id
-    title
-    image {
-      title
-      description
-      fluid(maxWidth: 1100) {
-        ...GatsbyContentfulFluid
-      }
-    }
-  }
-
-  fragment SectionImageWithCopyFragment on ContentfulSectionImageWithCopy {
-    internal {
-      type
-    }
-    id
-    title
-    copy {
-      childMarkdownRemark {
-        html
-      }
-    }
-    image {
-      title
-      description
-      fixed(width: 340) {
-        ...GatsbyContentfulFixed
-      }
-    }
-    imagePosition {
-      imagePosition
-    }
-  }
-
-  fragment SectionCopyFragment on ContentfulSectionCopy {
-    internal {
-      type
-    }
-    id
-    title
-    copy {
-      childMarkdownRemark {
-        html
-      }
-    }
-  }
-
-  fragment SectionCarouselFragment on ContentfulSectionCarousel {
-    internal {
-      type
-    }
-    id
-    title
-    images {
-      title
-      description
-      resize(width: 0, height: 250, resizingBehavior: NO_CHANGE) {
-        height
-        width
-        src
-      }
-    }
-  }
-
-  query ProjectById($id: String!) {
-    contentfulProject(id: { eq: $id }) {
-      title
-      intro {
-        childMarkdownRemark {
-          html
-        }
-      }
-      timeline
-      deliverables
-      platform
-      technology
-      client {
-        name
+  query($route: String!) {
+    markdownRemark(frontmatter: { route: { eq: $route } }) {
+      html
+      frontmatter {
+        title
+        client
         industry
-        about {
-          childMarkdownRemark {
-            html
+        summary
+        platform
+        technology
+        deliverables
+        timeline
+        sections {
+          type
+          imagePosition
+          smallImage {
+            alt
+            src {
+              childImageSharp {
+                fixed(width: 280) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
+          largeImage {
+            alt
+            src {
+              childImageSharp {
+                fluid(maxWidth: 1100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          copy
+          title
         }
-      }
-      sections {
-        ...SectionCarouselFragment
-        ...SectionCopyFragment
-        ...SectionImageFragment
-        ...SectionImageWithCopyFragment
       }
     }
   }

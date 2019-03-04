@@ -1,17 +1,24 @@
+const path = require('path')
 
 let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
 console.log(`Using environment config: '${activeEnv}'`)
 
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 
 module.exports = {
   siteMetadata: {
     title: 'Green Mountain Design & Development',
-    keywords: ['web development', 'web design', 'vermont', 'custom web development'],
-    description: 'Custom web design and development in the Green Mountains of Vermont',
+    keywords: [
+      'web development',
+      'web design',
+      'vermont',
+      'custom web development',
+    ],
+    description:
+      'Custom web design and development in the Green Mountains of Vermont',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -23,15 +30,37 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'projects',
+        path: path.join(__dirname, 'src', 'projects'),
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID, 
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
-    'gatsby-transformer-remark',
+    'gatsby-remark-copy-linked-files',
+    'gatsby-transformer-yaml',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        excerpt_separator: `<!-- more -->`,
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-remark-abbr',
+    {
+      resolve: 'gatsby-remark-images',
+      options: {
+        maxWidth: 1170,
+        quality: 100,
+      },
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {

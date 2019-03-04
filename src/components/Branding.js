@@ -20,8 +20,13 @@ BrandingMotto.displayName = 'BrandingMotto'
 
 const BrandingWrapper = styled.header`
   margin-bottom: ${shevy.baseSpacing(4)};
-  
-  ${props => !props.large && css`border-top: 6px solid ${themeValue('colors.foreground')};`};
+
+  ${props =>
+    !props.large &&
+    css`
+      border-top: 6px solid ${themeValue('colors.foreground')};
+      background-color: ${themeValue('colors.accent.highlight')};
+    `};
 `
 BrandingWrapper.displayName = 'BrandingWrapper'
 
