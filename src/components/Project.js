@@ -1,28 +1,24 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import {
   media,
   shevy,
   themeValue,
+  fontSize,
 } from './theme'
 import {
   H1,
   P,
-  WYSIWYG,
 } from './Typography'
 
 export const ProjectHeader = styled.header`
-  ${props => props.backgroundColor && css`background-color: ${themeValue(props.backgroundColor)}`};
-  padding: ${shevy.baseSpacing(3)} 0;
-  color: ${themeValue('colors.always.white')};
+  padding: ${shevy.baseSpacing(1)} 0 0;
   
-  ${media.large`padding: ${shevy.baseSpacing(7)} 0 ${shevy.baseSpacing(5)};`};
+  ${media.large`padding: ${shevy.baseSpacing(3)} 0 0`};
 `
 ProjectHeader.displayName = 'ProjectHeader'
 
-export const ProjectTitle = styled(H1)`
-  ${media.medium`max-width: 60%;`}
-`
+export const ProjectTitle = styled(H1)``
 ProjectTitle.displayName = 'ProjectTitle'
 
 export const ProjectIntro = styled.div`
@@ -30,66 +26,56 @@ export const ProjectIntro = styled.div`
 `
 ProjectIntro.displayName = 'ProjectIntro'
 
-export const ProjectIntroLead = styled.p`
+export const ProjectIntroLead = styled.h2`
   ${media.medium`flex: 1;`};
    font-size: ${shevy.h4.fontSize};
    line-height: ${shevy.h4.lineHeight};
    margin-bottom: ${shevy.baseSpacing(1)};
-
-   ${media.medium`
-     font-size: ${shevy.h2.fontSize};
-     line-height: ${shevy.h2.lineHeight};
-     margin-bottom: ${shevy.baseSpacing(3)};
-    `};
 `
 ProjectIntroLead.displayName = 'ProjectIntroLead'
-
-export const ProjectIntroInfo = styled(WYSIWYG)`
-  p {
-    ${media.medium`font-size: ${shevy.h4.fontSize};`}
-  }
-`
-ProjectIntroInfo.displayName = 'ProjectIntroInfo'
 
 export const ProjectInfo = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: ${shevy.baseSpacing(2)};
 
   ${media.medium`
     flex-direction: row;
-    align-items: flex-end;
-    margin-top: ${shevy.baseSpacing(3)};
   `}
 `
 ProjectInfo.displayName = 'ProjectInfo'
 
 export const ProjectMetaContainer = styled.dl`
-  display: flex;
-  flex-wrap: wrap;
   margin: ${shevy.baseSpacing(2)} 0 0;
+  padding: ${shevy.baseSpacing(1)};
+  background-color: ${themeValue('colors.backgroundDark')};
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  
+  span {
+    display: block;
+    margin-top: ${shevy.baseSpacing(0.25)};
+  }
 
   ${media.medium`
     display: block;
-    margin: 0 ${shevy.baseSpacing(4)} 0 0;
+    column-count: 2;
+    column-gap: ${shevy.baseSpacing(1)};
+    margin: 0 0 0 ${shevy.baseSpacing(4)};
     flex-basis: ${shevy.baseSpacing(12)};
-    order: -1;
   `}
 `
 ProjectMetaContainer.displayName = 'ProjectMetaContainer'
 
 export const ProjectMeta = styled.div`
-  margin: ${shevy.baseSpacing(0.75)} 0 0;
-  width: 50%;
-  
-  ${media.small`width: ${shevy.baseSpacing(10)};`};
-
-  ${media.medium`width: auto;`}
+  margin: 0 0 ${shevy.baseSpacing(0.75)};
+  break-inside: avoid;
 `
 ProjectMeta.displayName = 'ProjectMeta'
 
 export const ProjectMetaLabel = styled.dt`
   font-weight: 600;
+  text-transform: uppercase;
 `
 ProjectMetaLabel.displayName = 'ProjectMetaLabel'
 

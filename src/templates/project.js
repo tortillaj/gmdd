@@ -1,16 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-mdx'
 
 import {
   FullPageLayout,
   H2,
+  H3,
   Inset,
   P,
   ProjectHeader,
   ProjectInfo,
   ProjectIntro,
-  ProjectIntroInfo,
   ProjectIntroLead,
   ProjectMetaContainer,
   ProjectMeta,
@@ -25,194 +27,118 @@ import {
   SectionImageWithCopy,
   SectionImageWithCopyImage,
   SectionImageWithCopyText,
+  MDX_DesignSystem,
 } from '../components'
 
-export default ({ data: { markdownRemark } }) => (
-  <FullPageLayout title={markdownRemark.frontmatter.name} headerBackgroundColor="colors.primary.interaction">
-    <ProjectHeader backgroundColor="colors.primary.base">
-      <Inset>
-        <ProjectTitle>
-          {markdownRemark.frontmatter.client}
-        </ProjectTitle>
+export default ({ data: { mdx } }) => (
+  <MDXProvider components={MDX_DesignSystem}>
+    <FullPageLayout title={mdx.frontmatter.name} headerBackgroundColor="colors.primary.base">
+      {console.log(mdx)}
+      <ProjectHeader>
+        <Inset>
+          <ProjectInfo>
+            <ProjectIntro>
+              <ProjectTitle>
+                {mdx.frontmatter.client}
+              </ProjectTitle>
 
-        <ProjectInfo>
-          <ProjectIntro>
-            <ProjectIntroLead>
-              {markdownRemark.frontmatter.summary}
-            </ProjectIntroLead>
-            <ProjectIntroInfo
-              dangerouslySetInnerHTML={{
-                __html: markdownRemark.html,
-              }}
-            />
-          </ProjectIntro>
+              <ProjectIntroLead>
+                {mdx.frontmatter.summary}
+              </ProjectIntroLead>
 
-          <ProjectMetaContainer>
-            {markdownRemark.frontmatter.industry && (
-              <ProjectMeta>
-                <ProjectMetaLabel>Industry</ProjectMetaLabel>
-                <ProjectMetaContent>
-                  {markdownRemark.frontmatter.industry.map(industry => (
-                    <P key={industry}>{industry}</P>
-                  ))}
-                </ProjectMetaContent>
-              </ProjectMeta>
-            )}
+              <Img fixed={mdx.frontmatter.mainImage.childImageSharp.fixed}/>
+            </ProjectIntro>
 
-            {markdownRemark.frontmatter.platform && (
-              <ProjectMeta>
-                <ProjectMetaLabel>Platform</ProjectMetaLabel>
-                <ProjectMetaContent>
-                  {markdownRemark.frontmatter.platform.map(format => (
-                    <P key={format}>{format}</P>
-                  ))}
-                </ProjectMetaContent>
-              </ProjectMeta>
-            )}
+            <div>
+              <ProjectMetaContainer>
+                {mdx.frontmatter.deliverables && (
+                  <ProjectMeta>
+                    <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
+                    <ProjectMetaContent>
+                      {mdx.frontmatter.deliverables.map(deliverable => (
+                        <span key={deliverable}>{deliverable}</span>
+                      ))}
+                    </ProjectMetaContent>
+                  </ProjectMeta>
+                )}
 
-            {markdownRemark.frontmatter.technology && (
-              <ProjectMeta>
-                <ProjectMetaLabel>Technology</ProjectMetaLabel>
-                <ProjectMetaContent>
-                  {markdownRemark.frontmatter.technology.map(tech => (
-                    <P key={tech}>{tech}</P>
-                  ))}
-                </ProjectMetaContent>
-              </ProjectMeta>
-            )}
+                {mdx.frontmatter.industry && (
+                  <ProjectMeta>
+                    <ProjectMetaLabel>Industry</ProjectMetaLabel>
+                    <ProjectMetaContent>
+                      {mdx.frontmatter.industry.map(industry => (
+                        <span key={industry}>{industry}</span>
+                      ))}
+                    </ProjectMetaContent>
+                  </ProjectMeta>
+                )}
 
-            {markdownRemark.frontmatter.deliverables && (
-              <ProjectMeta>
-                <ProjectMetaLabel>Deliverables</ProjectMetaLabel>
-                <ProjectMetaContent>
-                  {markdownRemark.frontmatter.deliverables.map(deliverable => (
-                    <P key={deliverable}>{deliverable}</P>
-                  ))}
-                </ProjectMetaContent>
-              </ProjectMeta>
-            )}
+                {mdx.frontmatter.platform && (
+                  <ProjectMeta>
+                    <ProjectMetaLabel>Platform</ProjectMetaLabel>
+                    <ProjectMetaContent>
+                      {mdx.frontmatter.platform.map(format => (
+                        <span key={format}>{format}</span>
+                      ))}
+                    </ProjectMetaContent>
+                  </ProjectMeta>
+                )}
 
-            {markdownRemark.frontmatter.timeline && (
-              <ProjectMeta>
-                <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
-                <ProjectMetaContent>
-                  {markdownRemark.frontmatter.timeline.map(time => (
-                    <P key={time}>{time}</P>
-                  ))}
-                </ProjectMetaContent>
-              </ProjectMeta>
-            )}
-          </ProjectMetaContainer>
-        </ProjectInfo>
-      </Inset>
-    </ProjectHeader>
+                {mdx.frontmatter.technology && (
+                  <ProjectMeta>
+                    <ProjectMetaLabel>Technology</ProjectMetaLabel>
+                    <ProjectMetaContent>
+                      {mdx.frontmatter.technology.map(tech => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </ProjectMetaContent>
+                  </ProjectMeta>
+                )}
 
-    {markdownRemark.frontmatter.sections && (
-      <Sections>
-        {markdownRemark.frontmatter.sections.map((section, id) => {
-          switch (section.type) {
-            case 'SectionImage': {
-              return (
-                <SectionImage key={id}>
-                  <Img
-                    fluid={section.largeImage.src.childImageSharp.fluid}
-                    alt={section.largeImage.alt}
-                    longdesc={section.largeImage.description}
-                  />
-                </SectionImage>
-              )
-            }
-            case 'SectionCopy': {
-              return (
-                <SectionCopy key={id}>
+                {mdx.frontmatter.timeline && (
+                  <ProjectMeta>
+                    <ProjectMetaLabel>Engagement timeline</ProjectMetaLabel>
+                    <ProjectMetaContent>
+                      {mdx.frontmatter.timeline.map(time => (
+                        <span key={time}>{time}</span>
+                      ))}
+                    </ProjectMetaContent>
+                  </ProjectMeta>
+                )}
+              </ProjectMetaContainer>
+            </div>
+          </ProjectInfo>
+        </Inset>
+      </ProjectHeader>
 
-                  <H2 align="center">{section.title}</H2>
-                  <SectionCopyText>
-                    <P>{section.copy}</P>
-                  </SectionCopyText>
-                </SectionCopy>
-              )
-            }
-            case 'Carousel': {
-              return (
-                <SectionCarousel key={id}>
-                  {section.carousel.map(image => (
-                    <img
-                      key={image.childImageSharp.fixed.src}
-                      src={image.childImageSharp.fixed}
-                      alt={markdownRemark.frontmatter.client}
-                    />
-                  ))}
-                </SectionCarousel>
-              )
-            }
-            case 'SectionImageWithCopy': {
-              return (
-                <SectionImageWithCopy key={id}>
-                  <SectionImageWithCopyImage
-                    position={section.imagePosition}
-                    fixed={section.smallImage.src.childImageSharp.fixed}
-                    alt={section.smallImage.alt}
-                    longdesc={section.smallImage.description}
-                  />
-                  <SectionImageWithCopyText>
-                    <H2>{section.title}</H2>
-                    <P>
-                      {section.copy}
-                    </P>
-                  </SectionImageWithCopyText>
-                </SectionImageWithCopy>
-              )
-            }
-            default:
-              return null
-          }
-        })}
-      </Sections>
-    )}
-  </FullPageLayout>
+      <MDXRenderer>{mdx.code.body}</MDXRenderer>
+    </FullPageLayout>
+  </MDXProvider>
 )
 
 export const pageQuery = graphql`
-  query($route: String!) {
-    markdownRemark(frontmatter: { route: { eq: $route } }) {
-      html
-      frontmatter {
-        title
-        client
-        industry
-        summary
-        platform
-        technology
-        deliverables
-        timeline
-        sections {
-          type
-          imagePosition
-          smallImage {
-            alt
-            src {
-              childImageSharp {
-                fixed(width: 280) {
-                  ...GatsbyImageSharpFixed
-                }
-              }
+    query($route: String!) {
+        mdx(frontmatter: { route: { eq: $route } }) {
+            code {
+                body
             }
-          }
-          largeImage {
-            alt
-            src {
-              childImageSharp {
-                fluid(maxWidth: 1100) {
-                  ...GatsbyImageSharpFluid
+            frontmatter {
+                title
+                client
+                mainImage {
+                    childImageSharp {
+                        fixed(height: 432, width: 600, cropFocus: NORTH) {
+                            ...GatsbyImageSharpFixed
+                        }
+                    }
                 }
-              }
+                industry
+                summary
+                platform
+                technology
+                deliverables
+                timeline
             }
-          }
-          copy
-          title
         }
-      }
     }
-  }
 `

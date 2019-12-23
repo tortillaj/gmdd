@@ -1,0 +1,88 @@
+---
+order: 5
+title: Website overhaul
+route: projects/institute-for-advanced-studies-website-overhaul
+client: Institute for Advanced Studies
+mainImage: images/ias/1500x1080-homepage.png
+carousel:
+  - images/ias/375x812-homepage.png
+  - images/ias/1920x1080-hs.png
+  - images/ias/1024x768-events.png
+  - images/ias/768x1024-ideas.png
+  - images/ias/1024x768-news.png
+  - images/ias/375x812-idea.png
+  - images/ias/1920x1080-events.png
+summary: "The Institute for Advanced Studies (IAS) was looking for help in overhauling their website."
+industry:
+  - Education
+  - Research
+platform:
+  - Responsive Website
+technology:
+  - Drupal
+  - API Integrations
+deliverables:
+  - Custom Programming
+  - Art Direction
+  - UX/UI Design
+  - Performance Tuning
+timeline:
+  - Years
+---
+
+import {
+  H2,
+  P,
+  SectionBlockquote,
+  SectionCarousel,
+  SectionCopy,
+  SectionCopyText,
+  SectionImage,
+  SectionImageWithCopy,
+  SectionImageWithCopyImage,
+  SectionImageWithCopyText,
+} from '../components'
+
+<SectionCopy>
+    <H2>Identifying Pain Points</H2>
+    <P>They found the UI and UX difficult to maintain, but did not have the expertise to make the corrections they wanted.</P>
+    <P>To make matters more complex, IAS serves a suite of dozens of websites. Each website coordinates their design, and they all needed to maintain visual consistency.</P>
+    <P>The theme used to create the UI and UX was fully re-written. To keep consistency across their brand, we sliced out abstract design elements so they could be simply and quickly used anywhere needed. The result is a completely new design architecture and language.</P>
+    <P>As a result, all stakeholders know how to create new content in a predictable way. Regardless of technical knowledge, they can communicate with technical staff using the new shared design architecture and language.</P>
+    
+    <H2>Providing Solutions</H2>
+    <P>The front-end of the website was completely rewritten, while also maintaining strict visual consisitency with the original design.</P>
+</SectionCopy>
+
+<SectionImage filename="ias/1920x1080-homepage.png" alt="The homepage for the primary IAS website" />
+
+<SectionImageWithCopy filename="ias/375x812-idea.png" alt="IAS Idea page" imagePosition="right">
+    <H2>Responsive Development</H2>
+    <P>All Green Mountain Design & Development projects are responsive in nature. Over time, more and more people access the web with handheld devices of all sizes. As a result we put the mobile experience at the forefront of our process.</P>
+</SectionImageWithCopy>
+
+<SectionCopy backgroundColor="colors.backgroundDark" columns={0}>
+    <H2>About IAS</H2>
+    <P>The Institute for Advanced Study (IAS), is an independent postdoctoral research center for theoretical research and intellectual inquiry. It was founded in 1930 by American educator Abraham Flexner, together with philanthropists Louis Bamberger and Caroline Bamberger Fuld.</P> 
+</SectionCopy>
+
+<SectionCarousel images={[
+    { filename: "images/ias/1024x768-news.png", alt: "IAS News page" },
+    { filename: "images/ias/1024x768-events.png", alt: "IAS Events page" },
+    { filename: "images/ias/375x812-homepage.png", alt: "IAS homepage" },
+    { filename: "images/ias/1024x768-mission.png", alt: "IAS Mission page" },
+]} />
+
+<SectionBlockquote>
+    <P>We share the conviction of our founders that such unrestricted deep thinking will change this world, but where and how is always a surprise.</P> 
+    <footer>-- Robbert Dijkgraaf, Director and Leon Levy Professor</footer>
+</SectionBlockquote>
+
+<SectionCarousel images={[
+    { filename: "images/ias/1920x1080-hs.png", alt: "IAS School for Historical Studies" },
+    { filename: "images/ias/375x812-idea.png", alt: "IAS Idea page" },
+    { filename: "images/ias/1920x1080-events.png", alt: "IAS Events page" },
+    { filename: "images/ias/768x1024-ideas.png", alt: "IAS Ideas page" },
+]} />
+
+<SectionImage filename="ias/1920x1080-events.png" alt="The events page for the primary IAS website" />

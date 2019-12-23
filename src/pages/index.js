@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useState,
+} from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -26,7 +29,7 @@ import { Logo } from '../components/Logo'
 
 const IndexPage = (
   {
-    data: { allMarkdownRemark: { edges } }
+    data: { allMdx: { edges } },
   },
 ) => {
 
@@ -38,8 +41,6 @@ const IndexPage = (
     } else {
       setMobile(true)
     }
-
-    console.log(isMobile)
   }
 
   useEffect(() => {
@@ -120,28 +121,28 @@ const IndexPage = (
 export default IndexPage
 
 export const pageQuery = graphql`
-  query projects {
-    allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/md/"}},
-      sort: {fields: frontmatter___order, order:ASC})
-    {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            client
-            route
-            carousel {
-              childImageSharp {
-                fixed(height:246) {
-                  ...GatsbyImageSharpFixed
+    query projects {
+        allMdx(
+            filter: {fileAbsolutePath: {regex: "/projects/"}},
+            sort: {order:ASC, fields:[frontmatter___order]}
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        client
+                        route
+                        carousel {
+                            childImageSharp {
+                                fixed(height:246) {
+                                    ...GatsbyImageSharpFixed
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
     }
-  }
 `

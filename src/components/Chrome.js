@@ -23,8 +23,8 @@ Main.propTypes = {
 }
 
 const FooterWrapper = styled.footer`
-  color: ${themeValue('colors.accent.highlight')};
-  background-color: ${themeValue('colors.always.black')};
+  color: ${themeValue('colors.background')};
+  background-color: ${themeValue('colors.foreground')};
   height: ${shevy.baseSpacing(4)};
   padding: ${shevy.baseSpacing(0.5)} 0;
 
@@ -36,11 +36,6 @@ const FooterWrapper = styled.footer`
 
   ${Strong} {
     text-transform: uppercase;
-
-    ${media.medium`
-      font-size: ${shevy.h5.fontSize};
-      line-height: ${shevy.h5.lineHeight};
-    `}
   }
 `
 FooterWrapper.displayName = 'FooterWrapper'
@@ -48,7 +43,7 @@ FooterWrapper.displayName = 'FooterWrapper'
 export const Footer = () => (
   <FooterWrapper>
     <Inset>
-      <Strong>(802) 999-9999</Strong>
+      <Strong>(802) 456-0013</Strong>
       <Strong>Calais, Vermont</Strong>
     </Inset>
   </FooterWrapper>

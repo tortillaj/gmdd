@@ -1,15 +1,15 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-import { media, shevy, themeValue } from './theme'
+import { media, shevy, themeValue, fontSize } from './theme'
 import { Inset } from './Inset'
 import { P } from './Typography'
 
 export const BrandingMotto = styled(P)`
-  display: none;
-  font-size: ${shevy.body.fontSize};
+  ${fontSize(6)};
   line-height: 1;
-  width: ${shevy.baseSpacing(8.5)};
+  display: none;
+  width: ${shevy.baseSpacing(7)};
   font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 0 ${shevy.baseSpacing(0.5)};

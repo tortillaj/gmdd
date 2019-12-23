@@ -23,5 +23,5 @@ InsetInner.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 InsetInner.defaultProps = {
-  width: shevy.baseSpacing(44),
+  width: shevy.baseSpacing(30),
 }

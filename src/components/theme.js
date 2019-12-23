@@ -31,20 +31,25 @@ const white = '#ffffff'
 
 const colors = {
   primary: {
+    base: '#32701E',
+    // base: '#30645B',
+    interaction: '#193E0C',
+    // interaction: '#204E45',
+    highlight: '#32701E',
+    pale: '#3E8926',
+  },
+  base: {
+    high: '#3E8926',
+    midhigh: '#32701E',
+    mid: '#193E0C',
+    midlow: '#0C2405',
+    low: '#0C0C0C'
+  },
+  secondary: {
     base: '#3241B0',
     interaction: '#101C72',
     highlight: '#6471D7',
     pale: '#838DD7',
-    // base: '#458B27',
-    // interaction: '#498b42',
-    // highlight: '#22BE55',
-    // pale: '#A4F1BD',
-  },
-  secondary: {
-    base: '#FF9E2D',
-    interaction: '#A6600F',
-    highlight: '#FFB662',
-    pale: '#FFC98C',
   },
   grayscale: {
     base: '#9A9A9A',
@@ -72,6 +77,7 @@ const colors = {
   },
   foreground: black,
   background: white,
+  backgroundDark: '#E7E7E7',
 }
 
 const sizes = {
@@ -86,12 +92,13 @@ const typography = {
   sans: 'freight-sans-pro, sans-serif',
   serif: 'freight-display-pro, serif',
   fontSize: '1.4rem',
+  fontScale: [3.052, 2.441, 1.953, 1.563, 1.25, 1, 0.8, 0.64],
   lineHeight: 1.35,
 }
 
 export const shevy = new Shevy({
   baseFontSize: typography.fontSize,
-  baseFontScale: [4.209, 3.157, 2.369, 1.777, 1.333, 1],
+  baseFontScale: typography.fontScale,
   baseLineHeight: typography.lineHeight,
 })
 
@@ -106,7 +113,7 @@ export const theme = {
   sizes,
   typography,
   layout: {
-    siteWidth: shevy.baseSpacing(58),
+    siteWidth: shevy.baseSpacing(45),
   },
 }
 
@@ -119,3 +126,12 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 
   return acc
 }, {})
+
+export const fontSize = scale => {
+  const lineHeight = typography.lineHeight * parseFloat(typography.fontSize)
+  const scaleValue = typography.fontScale[scale] * parseFloat(typography.fontSize)
+  return css`
+    font-size: ${scaleValue}rem;
+    line-height: ${lineHeight / scaleValue };
+  `
+}

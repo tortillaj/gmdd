@@ -7,13 +7,9 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
   html {
     /* 1rem = 12px @ base browser settings */
-    font-size: 80%;
+    font-size: 75%;
     width: 100%;
     height: 100%;
-    ${media.medium`
-      /* 1rem = 10px @ base browser settings */
-      font-size: 62.5%;
-    `}
   }
   body {
     font-family: ${themeValue('typography.sans')};

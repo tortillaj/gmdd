@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { media, shevy } from './theme'
+import { media, shevy, fontSize } from './theme'
 
 export const MainMenuItem = styled(Link)`
+  ${fontSize(6)};
   font-weight: 600;
   color: inherit;
   text-transform: uppercase;

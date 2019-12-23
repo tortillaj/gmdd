@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components'
 
-import { media, shevy, themeValue } from './theme'
+import { media, shevy, themeValue, fontSize } from './theme'
 import { H2 } from './Typography'
 
 export const ContainerTitle = styled(H2)`
+  ${fontSize(6)};
   font-weight: 600;
-  font-size: ${shevy.body.fontSize};
-  line-height: ${shevy.body.lineHeight};
   margin-bottom: 0;
   font-family: ${themeValue('typography.sans')};
   text-transform: uppercase;

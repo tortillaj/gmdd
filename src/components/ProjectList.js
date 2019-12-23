@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-import { media, shevy, themeValue } from './theme'
+import { media, shevy, themeValue, fontSize } from './theme'
 import { H3 } from './Typography'
 
 export const ProjectListItem = styled.li`
@@ -43,12 +43,15 @@ export const ProjectListHeader = styled.div`
 `
 ProjectListHeader.displayName = 'ProjectListHeader'
 
-export const ProjectView = styled.div`
+export const ProjectView = styled.button`
+  ${fontSize(6)};
+  appearance: none;
   transition: background 0.3s ease-out;
-  border: 1px solid ${themeValue('colors.accent.base')};
+  border: 1px solid ${themeValue('colors.primary.base')};
   display: inline-block;
-  color: ${themeValue('colors.always.black')};
-  background-color: ${themeValue('colors.accent.highlight')};
+  cursor: pointer;
+  color: ${themeValue('colors.always.white')};
+  background-color: ${themeValue('colors.primary.base')};
   text-align: center;
   padding: ${shevy.baseSpacing(0.25)} ${shevy.baseSpacing(0.75)};
 
@@ -58,6 +61,10 @@ export const ProjectView = styled.div`
     margin-left: -${shevy.baseSpacing(0.25)};
     opacity: 0;
     transition: all 0.3s ease-out;
+  }
+  
+  &:hover {
+    cursor: pointer;
   }
 `
 ProjectView.displayName = 'ProjectView'
@@ -73,7 +80,7 @@ export const ProjectLink = styled(Link)`
 
   &:hover {
     ${ProjectView} {
-      background-color: ${themeValue('colors.accent.interaction')};
+      background-color: ${themeValue('colors.primary.interaction')};
 
       &::after {
         margin-left: ${shevy.baseSpacing(0.25)};

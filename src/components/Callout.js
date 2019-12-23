@@ -10,8 +10,8 @@ export const Callout = styled(P)`
   font-weight: 400;
 
   ${media.medium`
-    font-size: ${shevy.h1.fontSize};
-    line-height: ${shevy.h1.lineHeight};
+    font-size: ${shevy.h2.fontSize};
+    line-height: ${shevy.h2.lineHeight};
   `};
 `
 Callout.displayName = 'Callout'

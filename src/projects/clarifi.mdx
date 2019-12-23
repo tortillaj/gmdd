@@ -1,0 +1,104 @@
+---
+order: 10
+title: New website development
+client: Clarifi
+route: projects/clarifi-new-website-development
+mainImage: images/clarifi/1920x1080-how.png
+carousel:
+  - images/clarifi/375x812-homepage.png
+  - images/clarifi/1024x768-locations.png
+  - images/clarifi/1920x1080-how.png
+  - images/clarifi/768x1024-homepage.png
+  - images/clarifi/375x812-how.png
+  - images/clarifi/375x812-locations.png
+industry:
+  - Nonprofit
+  - Advocacy
+platform:
+  - Responsive Website
+technology:
+  - Drupal
+deliverables:
+  - Custom Programming
+  - Art Direction
+timeline:
+  - Several Months
+summary: "Clarifi needed help developing a design made by another organization."
+sections:
+  - type: SectionImage
+    largeImage:
+      src: images/clarifi/Desktop-Homepage.png
+      alt: Clarifi
+  - type: SectionImageWithCopy
+    smallImage:
+      src: images/clarifi/grid-items.png
+      alt: grid items
+    imagePosition: left
+    title: Custom Animations
+    copy: Clarifi provides advice on a large number of topics. To keep the finished product clean while also delivering all their content to users, we opted to reveal some content through interactive animations.
+  - type: SectionImage
+    largeImage:
+      src: images/clarifi/1920x1080-how.png
+      alt: Clarifi - How We Can Help
+  - type: SectionImageWithCopy
+    smallImage:
+      src: images/clarifi/375x812-how.png
+      alt: grid items
+    imagePosition: right
+    title: Responsive Development
+    copy: All Green Mountain Design & Development projects are responsive in nature. Over time, more and more people access the web with handheld devices of all sizes. As a result we put the mobile experience at the forefront of our process.
+---
+
+import {
+  H2,
+  P,
+  SectionBlockquote,
+  SectionCarousel,
+  SectionCopy,
+  SectionCopyText,
+  SectionImage,
+  SectionImageWithCopy,
+  SectionImageWithCopyImage,
+  SectionImageWithCopyText,
+} from '../components'
+
+<SectionCopy>
+    <H2>Identifying Pain Points</H2>
+    <P>Clarifi needed help developing the design made by another organization. Though the design was largely complete, we needed to provide additional art direction to make a more consistent design.</P>
+    <P>The finished website needed to convey optimism and friendliness, and the bright colors of the design and UI elements helped.</P>
+    
+    <H2>Providing Solutions</H2>
+    <P>During development, to ensure a lively website, we focused on creating animated UI elements. The idea was to offset the more sober nature of the topic with a sense of moderated playfulness.</P>
+    <P>In additional to custom programming for the entire website, a hightened focus was placed on an interactive UI.</P>
+</SectionCopy>
+
+<SectionImage filename="images/clarifi/1920x1080-how.png" />
+
+<SectionCopy backgroundColor="colors.accent.base" columns={0}>
+    <H2>About Clarifi</H2>
+    <P>Clarifi is a nonprofit organization focused on making financial literacy more accessible to everyone. They offer financial advice and planning. Clarifi is based in Philadelphia, PA, USA.</P> 
+</SectionCopy>
+
+<SectionCarousel images={[
+    { filename: "images/clarifi/375x812-homepage.png", alt: "homepage" },
+    { filename: "images/clarifi/1024x768-locations.png", alt: "Locations" },
+    { filename: "images/clarifi/1920x1080-how.png", alt: "How We Can Help" },
+]} />
+
+<SectionImageWithCopy backgroundColor="colors.backgroundDark" filename="images/clarifi/375x812-how.png" alt="Clarifi How We Can Help" imagePosition="right">
+    <H2>Responsive Development</H2>
+    <P>All Green Mountain Design & Development projects are responsive in nature. Over time, more and more people access the web with handheld devices of all sizes. As a result we put the mobile experience at the forefront of our process.</P>
+</SectionImageWithCopy>
+
+<SectionCarousel images={[
+    { filename: "images/clarifi/375x812-locations.png", alt: "Locations" },
+    { filename: "images/clarifi/375x812-how.png", alt: "How We Can Help" },
+    { filename: "images/clarifi/768x1024-homepage.png", alt: "homepage" },
+]} />
+
+<SectionImageWithCopy backgroundColor="colors.backgroundDark" filename="images/clarifi/grid-items.png" alt="grid items" imagePosition="left">
+    <H2>Custom Animations</H2>
+    <P>Clarifi provides advice on a large number of topics. To keep the finished product clean while also delivering all their content to users, we opted to reveal some content through interactive animations.</P>
+</SectionImageWithCopy>
+
+

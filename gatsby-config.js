@@ -28,6 +28,7 @@ module.exports = {
         path: path.join(__dirname, 'src', 'projects'),
       },
     },
+    'gatsby-mdx',
     'gatsby-remark-copy-linked-files',
     'gatsby-transformer-yaml',
     {
