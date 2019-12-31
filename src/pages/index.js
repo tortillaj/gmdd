@@ -1,21 +1,193 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import { RichText } from "prismic-reactjs"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import linkResolver from "../linkResolver"
+import {
+  BlankLayout,
+  Branding,
+  Callout,
+  Container,
+  ContainerContent,
+  ContainerTitle,
+  Inset,
+  ProjectCarousel,
+  ProjectCarouselItem,
+  ProjectListHeader,
+  ProjectLink,
+  ProjectList,
+  ProjectListItem,
+  ProjectListName,
+  ProjectView,
+  Main,
+  SectionCTA,
+  Footer,
+} from "../components"
+import { Logo } from "../components/Logo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+export const query = graphql`
+  query HomepageQuery {
+    prismic {
+      page(uid: "homepage", lang: "en-us") {
+        title
+        body {
+          ... on PRISMIC_PageBodyCta_banner {
+            type
+            primary {
+              image_banner
+              image_bannerSharp {
+                childImageSharp {
+                  fixed(height: 498) {
+                    ...GatsbyImageSharpFixed
+                  }
+                }
+              }
+              banner_text
+              banner_title
+              cta_label
+              cta_link {
+                ... on PRISMIC__ExternalLink {
+                  url
+                }
+              }
+            }
+          }
+          ... on PRISMIC_PageBodyProject_list {
+            type
+            primary {
+              section_title
+            }
+            fields {
+              project {
+                ... on PRISMIC_Project {
+                  _meta {
+                    type
+                    id
+                    uid
+                  }
+                  project_name
+                  client_name
+                  featured_images {
+                    image
+                    imageSharp {
+                      childImageSharp {
+                        fixed(height: 374) {
+                          ...GatsbyImageSharpFixed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on PRISMIC_PageBodyContent {
+            type
+            primary {
+              section_title
+              content
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
-export default IndexPage
+export default ({ data }) => {
+  const page = data.prismic.page
+
+  return (
+    <BlankLayout>
+      <Branding large>
+        <Logo />
+      </Branding>
+
+      <Main>
+        <Inset>
+          {page.body.map((section, index) => (
+            <React.Fragment key={`${section.type}-${index}`}>
+              {section.type === "content" && (
+                <Container>
+                  <RichText
+                    render={section.primary.section_title}
+                    Component={ContainerTitle}
+                    id={`${section.type}-${index}`}
+                  />
+
+                  <ContainerContent>
+                    <RichText
+                      render={section.primary.content}
+                      Component={Callout}
+                    />
+                  </ContainerContent>
+                </Container>
+              )}
+
+              {section.type === "project_list" && (
+                <Container>
+                  <RichText
+                    render={section.primary.section_title}
+                    Component={ContainerTitle}
+                    id={`${section.type}-${index}`}
+                  />
+
+                  <ContainerContent>
+                    <ProjectList>
+                      {section.fields &&
+                        section.fields.map(field => (
+                          <ProjectListItem key={field.project._meta.uid}>
+                            <ProjectLink to={linkResolver(field.project._meta)}>
+                              <ProjectListHeader>
+                                <ProjectListName>
+                                  {field.project.project_name},{" "}
+                                  {field.project.client_name}
+                                </ProjectListName>
+                                <ProjectView>View the project</ProjectView>
+                              </ProjectListHeader>
+
+                              <ProjectCarousel>
+                                {field.project.featured_images.map(
+                                  featured_image => (
+                                    <ProjectCarouselItem
+                                      key={featured_image.image.url}
+                                    >
+                                      <Img
+                                        fixed={
+                                          featured_image.imageSharp
+                                            .childImageSharp.fixed
+                                        }
+                                        alt={featured_image.image.alt}
+                                      />
+                                    </ProjectCarouselItem>
+                                  )
+                                )}
+                              </ProjectCarousel>
+                            </ProjectLink>
+                          </ProjectListItem>
+                        ))}
+                    </ProjectList>
+                  </ContainerContent>
+                </Container>
+              )}
+
+              {section.type === "cta_banner" && (
+                <SectionCTA
+                  alt={section.primary.image_banner.alt}
+                  image={section.primary.image_banner.url}
+                  title={section.primary.banner_title}
+                  content={section.primary.banner_text}
+                  ctaLabel={section.primary.cta_label}
+                  ctaLink={section.primary.cta_link.url}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </Inset>
+      </Main>
+
+      <Footer />
+    </BlankLayout>
+  )
+}
