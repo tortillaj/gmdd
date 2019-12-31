@@ -1,17 +1,17 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { media, shevy, themeValue, fontSize } from "./theme"
+import { media, shevy, themeValue, fontSize } from './theme'
 
 export const ContainerTitle = styled.header`
   h2 {
     ${fontSize(6)};
     font-weight: 600;
     margin-bottom: 0;
-    font-family: ${themeValue("typography.sans")};
+    font-family: ${themeValue('typography.sans')};
     text-transform: uppercase;
   }
 `
-ContainerTitle.displayName = "ContainerTitle"
+ContainerTitle.displayName = 'ContainerTitle'
 
 export const ContainerContent = styled.div`
   margin: ${shevy.baseSpacing(1)} 0 0;
@@ -20,7 +20,7 @@ export const ContainerContent = styled.div`
     margin: ${shevy.baseSpacing(2)} 0 0;
   `};
 `
-ContainerContent.displayname = "ContainerContent"
+ContainerContent.displayname = 'ContainerContent'
 
 export const Container = styled.section`
   padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(4)};
@@ -28,11 +28,11 @@ export const Container = styled.section`
   ${props =>
     !props.borderless &&
     css`
-      border-top: 3px solid ${themeValue("colors.foreground")};
+      border-top: 3px solid ${themeValue('colors.foreground')};
     `}
 
   ${media.medium`padding: ${shevy.baseSpacing(0.5)} 0 ${shevy.baseSpacing(
     10
   )};`};
 `
-Container.displayName = "Container"
+Container.displayName = 'Container'

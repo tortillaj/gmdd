@@ -1,14 +1,14 @@
-import React, { Component } from "react"
-import styled from "styled-components"
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import { shevy } from "./theme"
+import { shevy } from './theme'
 
 export const ProjectCarouselWrapper = styled.div`
   height: ${shevy.baseSpacing(13)};
   overflow: hidden;
   display: flex;
 `
-ProjectCarouselWrapper.displayName = "ProjectCarouselWrapper"
+ProjectCarouselWrapper.displayName = 'ProjectCarouselWrapper'
 
 export const ProjectCarouselItem = styled.div`
   height: inherit;
@@ -20,7 +20,7 @@ export const ProjectCarouselItem = styled.div`
     display: block;
   }
 `
-ProjectCarouselItem.displayName = "ProjectCarouselItem"
+ProjectCarouselItem.displayName = 'ProjectCarouselItem'
 
 export class ProjectCarousel extends Component {
   // componentDidMount() {

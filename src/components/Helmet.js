@@ -1,6 +1,6 @@
-import React from "react"
-import { Helmet as GatsbyHelmet } from "react-helmet"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { Helmet as GatsbyHelmet } from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
 
 export const Helmet = ({ title, children }) => (
   <StaticQuery
@@ -24,12 +24,12 @@ export const Helmet = ({ title, children }) => (
           title={pageTitle}
           meta={[
             {
-              name: "description",
+              name: 'description',
               content: data.site.siteMetadata.description,
             },
             {
-              name: "keywords",
-              content: data.site.siteMetadata.keywords.join(","),
+              name: 'keywords',
+              content: data.site.siteMetadata.keywords.join(','),
             },
           ]}
         >

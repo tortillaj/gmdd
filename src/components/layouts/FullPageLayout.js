@@ -1,14 +1,14 @@
-import React, { Fragment } from "react"
-import { ThemeProvider, ThemeConsumer } from "styled-components"
-import { StaticQuery, graphql, Link } from "gatsby"
+import React, { Fragment } from 'react'
+import { ThemeProvider, ThemeConsumer } from 'styled-components'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
-import { theme } from "../theme"
-import { GlobalStyle } from "../GlobalStyle"
-import { Helmet } from "../Helmet"
-import { Footer, Main, Wrapper } from "../Chrome"
-import { CondensedLogo } from "../Logo"
-import { Branding, BrandingMotto } from "../Branding"
-import { MainMenu, MainMenuItem } from "../MainMenu"
+import { theme } from '../theme'
+import { GlobalStyle } from '../GlobalStyle'
+import { Helmet } from '../Helmet'
+import { Footer, Main, Wrapper } from '../Chrome'
+import { CondensedLogo } from '../Logo'
+import { Branding, BrandingMotto } from '../Branding'
+import { MainMenu, MainMenuItem } from '../MainMenu'
 
 export class FullPageLayout extends React.Component {
   render() {

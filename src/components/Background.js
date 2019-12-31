@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { themeValue } from "./theme"
+import { themeValue } from './theme'
 
 export const Background = styled.div`
   ${props =>
@@ -9,4 +9,4 @@ export const Background = styled.div`
       background-color: ${themeValue(props.color)};
     `};
 `
-Background.displayName = "Background"
+Background.displayName = 'Background'

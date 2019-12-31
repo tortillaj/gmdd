@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { Link } from "gatsby"
+import styled from 'styled-components'
+import { Link } from 'gatsby'
 
-import { media, shevy, fontSize } from "./theme"
+import { media, shevy, fontSize } from './theme'
 
 export const MainMenuItem = styled(Link)`
   ${fontSize(6)};
@@ -10,7 +10,7 @@ export const MainMenuItem = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
 `
-MainMenuItem.displayName = "MainMenuItem"
+MainMenuItem.displayName = 'MainMenuItem'
 
 export const MainMenu = styled.nav`
   display: flex;
@@ -22,4 +22,4 @@ export const MainMenu = styled.nav`
 
   ${media.medium`margin-top: 0;`}
 `
-MainMenu.displayName = "MainMenu"
+MainMenu.displayName = 'MainMenu'

@@ -2,11 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { RichText } from 'prismic-reactjs'
 
-import {
-  fontSize,
-  shevy,
-  themeValue,
-} from './theme'
+import { fontSize, shevy, themeValue } from './theme'
 import { WYSIWYG } from './Typography'
 
 const SectionCTAContainer = styled.section`
@@ -58,18 +54,18 @@ export const CTAButton = styled.a`
   ${fontSize(6)};
   appearance: none;
   transition: background 0.3s ease-out;
-  border: 1px solid ${themeValue("colors.primary.base")};
+  border: 1px solid ${themeValue('colors.primary.base')};
   display: inline-block;
   cursor: pointer;
-  color: ${themeValue("colors.always.white")};
-  background-color: ${themeValue("colors.primary.base")};
+  color: ${themeValue('colors.always.white')};
+  background-color: ${themeValue('colors.primary.base')};
   text-align: center;
   padding: ${shevy.baseSpacing(0.5)} ${shevy.baseSpacing(1)};
   margin: ${shevy.baseSpacing(1)} 0;
   text-decoration: none;
 
   &::after {
-    content: "\u276F";
+    content: '\u276F';
     display: inline-block;
     margin-left: -${shevy.baseSpacing(0.25)};
     opacity: 0;
@@ -78,41 +74,38 @@ export const CTAButton = styled.a`
 
   &:hover {
     cursor: pointer;
-    background-color: ${themeValue("colors.primary.interaction")};
+    background-color: ${themeValue('colors.primary.interaction')};
 
-      &::after {
-        margin-left: ${shevy.baseSpacing(0.25)};
-        opacity: 1;
-      }
+    &::after {
+      margin-left: ${shevy.baseSpacing(0.25)};
+      opacity: 1;
+    }
   }
 `
-CTAButton.displayName = "CTAButton"
+CTAButton.displayName = 'CTAButton'
 
-export const SectionCTA = ({ alt, image, title, content, ctaLabel, ctaLink, ...rest }) => {
+export const SectionCTA = ({
+  alt,
+  image,
+  title,
+  content,
+  ctaLabel,
+  ctaLink,
+  ...rest
+}) => {
   console.log(rest)
   return (
     <SectionCTAContainer {...rest}>
+      <SectionCTABanner src={image} alt={alt} />
 
-        <SectionCTABanner
-          src={image}
-          alt={alt}
-        />
+      <SectionCTAOverlay aria-hidden="true" />
 
-        <SectionCTAOverlay aria-hidden="true" />
+      <SectionCTAContent>
+        <RichText render={title} Component={WYSIWYG} />
+        <RichText render={content} Component={WYSIWYG} />
 
-        <SectionCTAContent>
-          <RichText
-            render={title}
-            Component={WYSIWYG}
-          />
-          <RichText
-            render={content}
-            Component={WYSIWYG}
-          />
-
-          <CTAButton href={ctaLink}>{ctaLabel}</CTAButton>
-        </SectionCTAContent>
-
+        <CTAButton href={ctaLink}>{ctaLabel}</CTAButton>
+      </SectionCTAContent>
     </SectionCTAContainer>
   )
 }

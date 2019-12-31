@@ -1,14 +1,14 @@
-import React from "react"
-import styled from "styled-components"
-import Img from "gatsby-image"
+import React from 'react'
+import styled from 'styled-components'
+import Img from 'gatsby-image'
 
-import { media, shevy, themeValue } from "./theme"
-import { Inset } from "./Inset"
+import { media, shevy, themeValue } from './theme'
+import { Inset } from './Inset'
 
 export const Sections = styled.div`
   margin: 0;
 `
-Sections.displayName = "Sections"
+Sections.displayName = 'Sections'
 
 //
 //
@@ -18,11 +18,11 @@ Sections.displayName = "Sections"
 //
 const SectionImageContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
-  background-color: ${themeValue("colors.grayscale.pale")};
+  background-color: ${themeValue('colors.grayscale.pale')};
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
-SectionImageContainer.displayName = "SectionImageContainer"
+SectionImageContainer.displayName = 'SectionImageContainer'
 
 export const SectionImage = ({ alt, fluid, ...rest }) => {
   return (

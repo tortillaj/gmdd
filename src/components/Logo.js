@@ -1,8 +1,8 @@
-import React, { Fragment } from "react"
-import PropTypes from "prop-types"
-import { ThemeConsumer } from "styled-components"
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { ThemeConsumer } from 'styled-components'
 
-import fern from "../images/logo/fern.png"
+import fern from '../images/logo/fern.png'
 
 const logoImages = {
   fern: {

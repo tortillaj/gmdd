@@ -4,11 +4,11 @@
 // Section - Copy
 //
 //
-import styled, { css } from "styled-components"
-import { media, shevy, themeValue } from "./theme"
-import { WYSIWYG } from "./Typography"
-import { Inset } from "./Inset"
-import React from "react"
+import styled, { css } from 'styled-components'
+import { media, shevy, themeValue } from './theme'
+import { WYSIWYG } from './Typography'
+import { Inset } from './Inset'
+import React from 'react'
 
 const SectionCopyContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
@@ -21,10 +21,10 @@ const SectionCopyContainer = styled.section`
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
 `
-SectionCopyContainer.displayName = "SectionCopyContainer"
+SectionCopyContainer.displayName = 'SectionCopyContainer'
 
 SectionCopyContainer.defaultProps = {
-  backgroundColor: "colors.background",
+  backgroundColor: 'colors.background',
 }
 
 export const SectionCopyText = styled(WYSIWYG)`
@@ -38,7 +38,7 @@ export const SectionCopyText = styled(WYSIWYG)`
       `};
   `}
 `
-SectionCopyText.displayName = "SectionCopyText"
+SectionCopyText.displayName = 'SectionCopyText'
 
 SectionCopyText.defaultProps = {
   columns: 2,

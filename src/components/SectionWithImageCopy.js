@@ -4,12 +4,12 @@
 // Section - Image with Copy
 //
 //
-import styled, { css } from "styled-components"
-import Img from "gatsby-image"
-import { media, shevy, themeValue } from "./theme"
-import { WYSIWYG } from "./Typography"
-import { Inset, InsetInner } from "./Inset"
-import React from "react"
+import styled, { css } from 'styled-components'
+import Img from 'gatsby-image'
+import { media, shevy, themeValue } from './theme'
+import { WYSIWYG } from './Typography'
+import { Inset, InsetInner } from './Inset'
+import React from 'react'
 
 const SectionImageWithCopyContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
@@ -23,10 +23,10 @@ const SectionImageWithCopyContainer = styled.section`
     padding: ${shevy.baseSpacing(4)} 0;
   `}
 `
-SectionImageWithCopyContainer.displayName = "SectionImageWithCopyContainer"
+SectionImageWithCopyContainer.displayName = 'SectionImageWithCopyContainer'
 
 SectionImageWithCopyContainer.defaultProps = {
-  backgroundColor: "colors.background",
+  backgroundColor: 'colors.background',
 }
 
 export const SectionImageWithCopyImage = styled.div`
@@ -35,7 +35,7 @@ export const SectionImageWithCopyImage = styled.div`
   order: 1;
 
   ${props =>
-    props.position === "right"
+    props.position === 'right'
       ? css`
           ${media.small`
             margin-left: ${shevy.baseSpacing(2)};
@@ -53,7 +53,7 @@ export const SectionImageWithCopyImage = styled.div`
     flex-basis: 50%;
   `}
 `
-SectionImageWithCopyImage.displayName = "SectionImageWithCopyImage"
+SectionImageWithCopyImage.displayName = 'SectionImageWithCopyImage'
 
 export const SectionImageWithCopyText = styled(WYSIWYG)`
   padding: 0 0 ${shevy.baseSpacing(1)} 0;
@@ -73,7 +73,7 @@ export const SectionImageWithCopyText = styled(WYSIWYG)`
     flex-direction: column;
   `}
 `
-SectionImageWithCopyText.displayName = "SectionImageWithCopyText"
+SectionImageWithCopyText.displayName = 'SectionImageWithCopyText'
 
 const SectionImageWithCopyInner = styled.div`
   display: flex;
@@ -86,7 +86,7 @@ const SectionImageWithCopyInner = styled.div`
     align-items: center;
   `}
 `
-SectionImageWithCopyInner.displayName = "SectionImageWithCopyInner"
+SectionImageWithCopyInner.displayName = 'SectionImageWithCopyInner'
 
 export const SectionImageWithCopy = ({
   backgroundColor,

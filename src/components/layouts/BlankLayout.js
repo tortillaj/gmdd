@@ -1,10 +1,10 @@
-import React, { Fragment } from "react"
-import { ThemeProvider } from "styled-components"
+import React, { Fragment } from 'react'
+import { ThemeProvider } from 'styled-components'
 
-import { theme } from "../theme"
-import { GlobalStyle } from "../GlobalStyle"
-import { Helmet } from "../Helmet"
-import { Wrapper } from "../Chrome"
+import { theme } from '../theme'
+import { GlobalStyle } from '../GlobalStyle'
+import { Helmet } from '../Helmet'
+import { Wrapper } from '../Chrome'
 
 export class BlankLayout extends React.Component {
   render() {

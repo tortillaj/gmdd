@@ -1,7 +1,7 @@
-import React from "react"
-import { RichText } from "prismic-reactjs"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { RichText } from 'prismic-reactjs'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import {
   FullPageLayout,
@@ -21,7 +21,7 @@ import {
   SectionImageWithCopy,
   SectionCarousel,
   WYSIWYG,
-} from "../components"
+} from '../components'
 
 export const query = graphql`
   query ProjectQuery($uid: String) {
@@ -195,7 +195,7 @@ export default ({ data }) => {
       {doc.node.body &&
         doc.node.body.map((section, index) => {
           switch (section.type) {
-            case "quote":
+            case 'quote':
               return (
                 <SectionBlockquote
                   key={`${section.type}-${index}`}
@@ -203,7 +203,7 @@ export default ({ data }) => {
                   content={section.quote_primary.content}
                 />
               )
-            case "image_with_copy":
+            case 'image_with_copy':
               return (
                 <SectionImageWithCopy
                   fixed={
@@ -216,7 +216,7 @@ export default ({ data }) => {
                   <RichText render={section.image_with_copy_primary.content} />
                 </SectionImageWithCopy>
               )
-            case "full-width_image":
+            case 'full-width_image':
               return (
                 <SectionImage
                   fluid={
@@ -225,7 +225,7 @@ export default ({ data }) => {
                   }
                 />
               )
-            case "carousel":
+            case 'carousel':
               return (
                 <SectionCarousel
                   images={section.carousel_fields.map(field => ({
@@ -235,7 +235,7 @@ export default ({ data }) => {
                   }))}
                 />
               )
-            case "multicolumn_text":
+            case 'multicolumn_text':
               return (
                 <SectionCopy
                   columns={section.multicolumn_text_primary.column_count}

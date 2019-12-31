@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
-import { RichText } from "prismic-reactjs"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import { RichText } from 'prismic-reactjs'
 
-import linkResolver from "../linkResolver"
+import linkResolver from '../linkResolver'
 import {
   BlankLayout,
   Branding,
@@ -23,8 +23,8 @@ import {
   Main,
   SectionCTA,
   Footer,
-} from "../components"
-import { Logo } from "../components/Logo"
+} from '../components'
+import { Logo } from '../components/Logo'
 
 export const query = graphql`
   query HomepageQuery {
@@ -108,7 +108,7 @@ export default ({ data }) => {
         <Inset>
           {page.body.map((section, index) => (
             <React.Fragment key={`${section.type}-${index}`}>
-              {section.type === "content" && (
+              {section.type === 'content' && (
                 <Container>
                   <RichText
                     render={section.primary.section_title}
@@ -125,7 +125,7 @@ export default ({ data }) => {
                 </Container>
               )}
 
-              {section.type === "project_list" && (
+              {section.type === 'project_list' && (
                 <Container>
                   <RichText
                     render={section.primary.section_title}
@@ -141,7 +141,7 @@ export default ({ data }) => {
                             <ProjectLink to={linkResolver(field.project._meta)}>
                               <ProjectListHeader>
                                 <ProjectListName>
-                                  {field.project.project_name},{" "}
+                                  {field.project.project_name},{' '}
                                   {field.project.client_name}
                                 </ProjectListName>
                                 <ProjectView>View the project</ProjectView>
@@ -172,7 +172,7 @@ export default ({ data }) => {
                 </Container>
               )}
 
-              {section.type === "cta_banner" && (
+              {section.type === 'cta_banner' && (
                 <SectionCTA
                   alt={section.primary.image_banner.alt}
                   image={section.primary.image_banner.url}

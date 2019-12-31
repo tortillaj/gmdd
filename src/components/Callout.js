@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { WYSIWYG } from "./Typography"
-import { media, shevy, themeValue } from "./theme"
+import { WYSIWYG } from './Typography'
+import { media, shevy, themeValue } from './theme'
 
 export const Callout = styled(WYSIWYG)`
   p {
     font-size: ${shevy.h3.fontSize};
     line-height: ${shevy.h3.lineHeight};
-    font-family: ${themeValue("typography.serif")};
+    font-family: ${themeValue('typography.serif')};
     font-weight: 400;
 
     ${media.medium`
@@ -16,4 +16,4 @@ export const Callout = styled(WYSIWYG)`
     `};
   }
 `
-Callout.displayName = "Callout"
+Callout.displayName = 'Callout'

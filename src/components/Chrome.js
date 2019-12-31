@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import PropTypes from "prop-types"
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-import { shevy, themeValue } from "./theme"
-import { Strong } from "./Typography"
-import { Inset } from "./Inset"
+import { shevy, themeValue } from './theme'
+import { Strong } from './Typography'
+import { Inset } from './Inset'
 
 export const Wrapper = styled.article`
   min-height: 100vh;
@@ -12,19 +12,19 @@ export const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
 `
-Wrapper.displayName = "Wrapper"
+Wrapper.displayName = 'Wrapper'
 
 export const Main = styled.main`
   flex: 1;
 `
-Main.displayName = "Main"
+Main.displayName = 'Main'
 Main.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
 const FooterWrapper = styled.footer`
-  color: ${themeValue("colors.background")};
-  background-color: ${themeValue("colors.foreground")};
+  color: ${themeValue('colors.background')};
+  background-color: ${themeValue('colors.foreground')};
   height: ${shevy.baseSpacing(4)};
   padding: ${shevy.baseSpacing(0.5)} 0;
   margin-top: ${shevy.baseSpacing(2)};
@@ -39,7 +39,7 @@ const FooterWrapper = styled.footer`
     text-transform: uppercase;
   }
 `
-FooterWrapper.displayName = "FooterWrapper"
+FooterWrapper.displayName = 'FooterWrapper'
 
 export const Footer = () => (
   <FooterWrapper>

@@ -1,9 +1,9 @@
-import React from "react"
-import styled, { css } from "styled-components"
+import React from 'react'
+import styled, { css } from 'styled-components'
 
-import { media, shevy, themeValue, fontSize } from "./theme"
-import { Inset } from "./Inset"
-import { P } from "./Typography"
+import { media, shevy, themeValue, fontSize } from './theme'
+import { Inset } from './Inset'
+import { P } from './Typography'
 
 export const BrandingMotto = styled(P)`
   ${fontSize(6)};
@@ -16,7 +16,7 @@ export const BrandingMotto = styled(P)`
   color: inherit;
   ${media.medium`display: inline-block;`};
 `
-BrandingMotto.displayName = "BrandingMotto"
+BrandingMotto.displayName = 'BrandingMotto'
 
 const BrandingWrapper = styled.header`
   ${props =>
@@ -27,23 +27,23 @@ const BrandingWrapper = styled.header`
   ${props =>
     props.large &&
     css`
-      color: ${themeValue("colors.foreground")};
+      color: ${themeValue('colors.foreground')};
     `};
 
   ${props =>
     !props.large &&
     css`
-      border-top: 6px solid ${themeValue("colors.foreground")};
+      border-top: 6px solid ${themeValue('colors.foreground')};
       background-color: ${props =>
         props.backgroundColor && themeValue(props.backgroundColor)};
-      color: ${themeValue("colors.always.white")};
+      color: ${themeValue('colors.always.white')};
     `};
 
   a {
     color: inherit;
   }
 `
-BrandingWrapper.displayName = "BrandingWrapper"
+BrandingWrapper.displayName = 'BrandingWrapper'
 
 const BrandingInner = styled.div`
   display: flex;
@@ -64,13 +64,13 @@ const BrandingInner = styled.div`
   ${props =>
     props.large &&
     css`
-      border-top: 6px solid ${themeValue("colors.foreground")};
+      border-top: 6px solid ${themeValue('colors.foreground')};
       flex-direction: column;
       justify-content: center;
       align-items: center;
     `}
 `
-BrandingInner.displayName = "BrandingInner"
+BrandingInner.displayName = 'BrandingInner'
 
 export const Branding = ({ backgroundColor, large, children, className }) => (
   <BrandingWrapper

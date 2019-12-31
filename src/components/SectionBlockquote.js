@@ -4,19 +4,19 @@
 // Section - Blockquote
 //
 //
-import styled from "styled-components"
-import { media, shevy, themeValue } from "./theme"
-import { P, Em } from "./Typography"
-import { Inset, InsetInner } from "./Inset"
-import React from "react"
+import styled from 'styled-components'
+import { media, shevy, themeValue } from './theme'
+import { P, Em } from './Typography'
+import { Inset, InsetInner } from './Inset'
+import React from 'react'
 
 const SectionBlockquoteContainer = styled.blockquote`
   padding: ${shevy.baseSpacing(2)} 0;
-  background-color: ${themeValue("colors.grayscale.pale")};
+  background-color: ${themeValue('colors.grayscale.pale')};
   text-align: center;
 
   ${P} {
-    font-family: ${themeValue("typography.serif")};
+    font-family: ${themeValue('typography.serif')};
   }
 
   ${media.medium`padding: ${shevy.baseSpacing(4)} 0;`}
@@ -26,7 +26,7 @@ const SectionBlockquoteContainer = styled.blockquote`
     }
   `}
 `
-SectionBlockquoteContainer.displayName = "SectionBlockquoteContainer"
+SectionBlockquoteContainer.displayName = 'SectionBlockquoteContainer'
 
 const Cite = styled(Em)``
 

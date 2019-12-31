@@ -1,9 +1,9 @@
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 
-import { media, shevy, themeValue, fontSize } from "./theme"
-import { H3 } from "./Typography"
+import { media, shevy, themeValue, fontSize } from './theme'
+import { H3 } from './Typography'
 
 export const ProjectListItem = styled.li`
   margin-top: ${shevy.baseSpacing(1)};
@@ -20,15 +20,15 @@ export const ProjectListItem = styled.li`
     `};
   }
 `
-ProjectListItem.displayName = "ProjectListItem"
+ProjectListItem.displayName = 'ProjectListItem'
 
 export const ProjectListName = styled(H3)`
   font-weight: 600;
   font-style: italic;
   margin: 0 0 ${shevy.baseSpacing(0.5)};
-  color: ${themeValue("colors.foreground")};
+  color: ${themeValue('colors.foreground')};
 `
-ProjectListName.displayName = "ProjectListName"
+ProjectListName.displayName = 'ProjectListName'
 
 export const ProjectListHeader = styled.div`
   display: flex;
@@ -41,22 +41,22 @@ export const ProjectListHeader = styled.div`
     justify-content: space-between;
   `}
 `
-ProjectListHeader.displayName = "ProjectListHeader"
+ProjectListHeader.displayName = 'ProjectListHeader'
 
 export const ProjectView = styled.button`
   ${fontSize(6)};
   appearance: none;
   transition: background 0.3s ease-out;
-  border: 1px solid ${themeValue("colors.primary.base")};
+  border: 1px solid ${themeValue('colors.primary.base')};
   display: inline-block;
   cursor: pointer;
-  color: ${themeValue("colors.always.white")};
-  background-color: ${themeValue("colors.primary.base")};
+  color: ${themeValue('colors.always.white')};
+  background-color: ${themeValue('colors.primary.base')};
   text-align: center;
   padding: ${shevy.baseSpacing(0.25)} ${shevy.baseSpacing(0.75)};
 
   &::after {
-    content: "\u276F";
+    content: '\u276F';
     display: inline-block;
     margin-left: -${shevy.baseSpacing(0.25)};
     opacity: 0;
@@ -67,10 +67,10 @@ export const ProjectView = styled.button`
     cursor: pointer;
   }
 `
-ProjectView.displayName = "ProjectView"
+ProjectView.displayName = 'ProjectView'
 
 export const ProjectList = styled.ol``
-ProjectList.displayName = "ProjectList"
+ProjectList.displayName = 'ProjectList'
 ProjectList.propTypes = {
   children: PropTypes.node.isRequired,
 }
@@ -80,7 +80,7 @@ export const ProjectLink = styled(Link)`
 
   &:hover {
     ${ProjectView} {
-      background-color: ${themeValue("colors.primary.interaction")};
+      background-color: ${themeValue('colors.primary.interaction')};
 
       &::after {
         margin-left: ${shevy.baseSpacing(0.25)};
@@ -89,4 +89,4 @@ export const ProjectLink = styled(Link)`
     }
   }
 `
-ProjectLink.displayName = "ProjectLink"
+ProjectLink.displayName = 'ProjectLink'

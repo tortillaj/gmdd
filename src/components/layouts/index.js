@@ -1,2 +1,2 @@
-export * from "./BlankLayout"
-export * from "./FullPageLayout"
+export * from './BlankLayout'
+export * from './FullPageLayout'

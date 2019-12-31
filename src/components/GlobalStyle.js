@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components"
-import reset from "styled-reset"
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
-import { shevy, themeValue } from "./theme"
+import { shevy, themeValue } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -12,11 +12,11 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    font-family: ${themeValue("typography.sans")};
+    font-family: ${themeValue('typography.sans')};
     font-size: ${shevy.body.fontSize};
     line-height: ${shevy.body.lineHeight};
-    background-color: ${themeValue("colors.background")};
-    color: ${themeValue("colors.foreground")};
+    background-color: ${themeValue('colors.background')};
+    color: ${themeValue('colors.foreground')};
     width: 100%;
     height: 100%;
     margin: 0;

@@ -4,12 +4,12 @@
 // Section - Carousel
 //
 //
-import React from "react"
-import Img from "gatsby-image"
-import styled from "styled-components"
+import React from 'react'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
 
-import { media, shevy } from "./theme"
-import { Inset } from "./Inset"
+import { media, shevy } from './theme'
+import { Inset } from './Inset'
 
 const SectionCarouselContainer = styled.section`
   padding: ${shevy.baseSpacing(2)} 0;
@@ -18,7 +18,7 @@ const SectionCarouselContainer = styled.section`
     padding: ${shevy.baseSpacing(4)} 0;
   `}
 `
-SectionCarouselContainer.displayName = "SectionCarouselContainer"
+SectionCarouselContainer.displayName = 'SectionCarouselContainer'
 
 const SectionCarouselImageList = styled.div`
   display: flex;
@@ -29,12 +29,12 @@ const SectionCarouselImageList = styled.div`
     flex-wrap: nowrap;
   `}
 `
-SectionCarouselImageList.displayName = "SectionCarouselImageList"
+SectionCarouselImageList.displayName = 'SectionCarouselImageList'
 
 const SectionCarouselImage = styled(Img)`
   margin: ${shevy.baseSpacing(1)};
 `
-SectionCarouselImage.displayName = "SectionCarouselImage"
+SectionCarouselImage.displayName = 'SectionCarouselImage'
 
 export const SectionCarousel = ({ images, ...rest }) => {
   return (
