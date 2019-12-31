@@ -47,6 +47,7 @@ const SectionCTAContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: ${themeValue('colors.always.white')};
 `
 SectionCTAContent.displayName = 'SectionCTAContent'
 
