@@ -94,7 +94,6 @@ export const SectionCTA = ({
   ctaLink,
   ...rest
 }) => {
-  console.log(rest)
   return (
     <SectionCTAContainer {...rest}>
       <SectionCTABanner src={image} alt={alt} />

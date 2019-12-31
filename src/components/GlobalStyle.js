@@ -4,7 +4,6 @@ import reset from 'styled-reset'
 import { shevy, themeValue } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
-  @import url("https://use.typekit.net/ztr7eov.css");
   ${reset}
   html {
     /* 1rem = 12px @ base browser settings */
