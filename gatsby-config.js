@@ -13,6 +13,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
+    {
       resolve: `gatsby-source-prismic-graphql`,
       options: {
         repositoryName: 'gmdd',
