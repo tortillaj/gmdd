@@ -164,7 +164,9 @@ export default ({ data }) => {
         { name: 'description', content: page.meta_description },
         { property: 'og:type', content: openGraph ? openGraph.type : '' },
         { property: 'og:description', content: page.meta_description },
-        { property: 'og:image', content: openGraph && openGraph.imageSharp ? openGraph.imageSharp.childImageSharp.fixed.src : '' },
+        { property: 'og:image', content: openGraph && openGraph.imageSharp
+            ? `https://greenmountain.design${openGraph.imageSharp.childImageSharp.fixed.src}`
+            : '' },
         { property: 'og:image:width', content: 375 },
         { property: 'og:image:height', content: 250 },
         { property: 'article:section', content: openGraph ? openGraph.section : '' },
