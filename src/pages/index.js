@@ -31,6 +31,30 @@ export const query = graphql`
     prismic {
       page(uid: "homepage", lang: "en-us") {
         title
+        meta_title
+        meta_description
+        canonical_url
+        _meta {
+          lang
+          lastPublicationDate
+          firstPublicationDate
+        }
+        body1 {
+          ... on PRISMIC_PageBody1Facebook__open_graph_ {
+            primary {
+              section
+              tags
+              type
+              imageSharp {
+                childImageSharp {
+                  fixed(width: 300, height: 250) {
+                    src
+                  }
+                }
+              }
+            }
+          }
+        }
         body {
           ... on PRISMIC_PageBodyCta_banner {
             type
@@ -97,11 +121,23 @@ export const query = graphql`
 
 export default ({ data }) => {
   const page = data.prismic.page
+  const openGraph = page.body1[0].primary
 
   return (
-    <BlankLayout>
+    <BlankLayout title={page.meta_title}
+                 pageMeta={[
+                   { name: 'description', content: page.meta_description },
+                   { property: 'og:type', content: openGraph.type },
+                   { property: 'og:description', content: page.meta_description },
+                   { property: 'article:section', content: openGraph.section },
+                   { property: 'article:tags', content: openGraph.tags },
+                   { property: 'article:published_time', content: page._meta.firstPublicationDate },
+                   { property: 'article:revised_time', content: page._meta.lastPublicationDate },
+                   { name: 'language', content: page._meta.lang },
+                   { name: 'revised', content: page._meta.lastPublicationDate },
+                 ]}>
       <Branding large>
-        <Logo />
+        <Logo/>
       </Branding>
 
       <Main>
@@ -136,37 +172,37 @@ export default ({ data }) => {
                   <ContainerContent>
                     <ProjectList>
                       {section.fields &&
-                        section.fields.map(field => (
-                          <ProjectListItem key={field.project._meta.uid}>
-                            <ProjectLink to={linkResolver(field.project._meta)}>
-                              <ProjectListHeader>
-                                <ProjectListName>
-                                  {field.project.project_name},{' '}
-                                  {field.project.client_name}
-                                </ProjectListName>
-                                <ProjectView>View the project</ProjectView>
-                              </ProjectListHeader>
+                      section.fields.map(field => (
+                        <ProjectListItem key={field.project._meta.uid}>
+                          <ProjectLink to={linkResolver(field.project._meta)}>
+                            <ProjectListHeader>
+                              <ProjectListName>
+                                {field.project.project_name},{' '}
+                                {field.project.client_name}
+                              </ProjectListName>
+                              <ProjectView>View the project</ProjectView>
+                            </ProjectListHeader>
 
-                              <ProjectCarousel>
-                                {field.project.featured_images.map(
-                                  featured_image => (
-                                    <ProjectCarouselItem
-                                      key={featured_image.image.url}
-                                    >
-                                      <Img
-                                        fixed={
-                                          featured_image.imageSharp
-                                            .childImageSharp.fixed
-                                        }
-                                        alt={featured_image.image.alt}
-                                      />
-                                    </ProjectCarouselItem>
-                                  )
-                                )}
-                              </ProjectCarousel>
-                            </ProjectLink>
-                          </ProjectListItem>
-                        ))}
+                            <ProjectCarousel>
+                              {field.project.featured_images.map(
+                                featured_image => (
+                                  <ProjectCarouselItem
+                                    key={featured_image.image.url}
+                                  >
+                                    <Img
+                                      fixed={
+                                        featured_image.imageSharp
+                                          .childImageSharp.fixed
+                                      }
+                                      alt={featured_image.image.alt}
+                                    />
+                                  </ProjectCarouselItem>
+                                ),
+                              )}
+                            </ProjectCarousel>
+                          </ProjectLink>
+                        </ProjectListItem>
+                      ))}
                     </ProjectList>
                   </ContainerContent>
                 </Container>
@@ -187,7 +223,7 @@ export default ({ data }) => {
         </Inset>
       </Main>
 
-      <Footer />
+      <Footer/>
     </BlankLayout>
   )
 }

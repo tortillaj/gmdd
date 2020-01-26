@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet as GatsbyHelmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-export const Helmet = ({ title, children }) => (
+export const Helmet = ({ title, children, pageMeta }) => (
   <StaticQuery
     query={graphql`
       query HelmetQuery {
@@ -16,12 +16,10 @@ export const Helmet = ({ title, children }) => (
       }
     `}
     render={data => {
-      const pageTitle = title
-        ? `${title} | ${data.site.siteMetadata.title}`
-        : data.site.siteMetadata.title
       return (
         <GatsbyHelmet
-          title={pageTitle}
+          titleTemplate={`%s | ${data.site.siteMetadata.title}, Vermont, USA`}
+          title={title}
           meta={[
             {
               name: 'description',
@@ -31,7 +29,7 @@ export const Helmet = ({ title, children }) => (
               name: 'keywords',
               content: data.site.siteMetadata.keywords.join(','),
             },
-          ]}
+          ].concat(pageMeta)}
         >
           <html lang="en" />
           {children}
@@ -40,3 +38,7 @@ export const Helmet = ({ title, children }) => (
     }}
   />
 )
+
+Helmet.defaultProps = {
+  pageMeta: [],
+}
