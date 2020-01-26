@@ -122,6 +122,14 @@ export const query = graphql`
 export default ({ data }) => {
   const page = data.prismic.page
   const openGraph = page.body1[0].primary
+  const tags = openGraph
+    ? openGraph.tags
+    : ''
+  const tagList = tags.split(',')
+    .map(tag => ({
+      property: 'article:tag',
+      content: tag,
+    }))
 
   return (
     <BlankLayout title={page.meta_title}
@@ -130,12 +138,11 @@ export default ({ data }) => {
                    { property: 'og:type', content: openGraph.type },
                    { property: 'og:description', content: page.meta_description },
                    { property: 'article:section', content: openGraph.section },
-                   { property: 'article:tags', content: openGraph.tags },
                    { property: 'article:published_time', content: page._meta.firstPublicationDate },
                    { property: 'article:revised_time', content: page._meta.lastPublicationDate },
                    { name: 'language', content: page._meta.lang },
                    { name: 'revised', content: page._meta.lastPublicationDate },
-                 ]}>
+                 ].concat(tagList)}>
       <Branding large>
         <Logo/>
       </Branding>

@@ -147,6 +147,14 @@ export default ({ data }) => {
   if (!doc) return null
   const page = doc.node
   const openGraph = page.body1 ? page.body1[0].primary : null
+  const tags = openGraph
+    ? `${page.deliverables}, ${page.technologies}, ${openGraph.tags}`
+    : `${page.deliverables}, ${page.technologies}`
+  const tagList = tags.split(',')
+    .map(tag => ({
+      property: 'article:tag',
+      content: tag,
+    }))
 
   return (
     <FullPageLayout
@@ -160,17 +168,11 @@ export default ({ data }) => {
         { property: 'og:image:width', content: 375 },
         { property: 'og:image:height', content: 250 },
         { property: 'article:section', content: openGraph ? openGraph.section : '' },
-        {
-          property: 'article:tags',
-          content: openGraph
-            ? `${page.deliverables}, ${page.technologies}, ${openGraph.tags}`
-            : `${page.deliverables}, ${page.technologies}`,
-        },
         { property: 'article:published_time', content: page._meta.firstPublicationDate },
         { property: 'article:revised_time', content: page._meta.lastPublicationDate },
         { name: 'language', content: page._meta.lang },
         { name: 'revised', content: page._meta.lastPublicationDate },
-      ]}
+      ].concat(tagList)}
     >
       <ProjectHeader>
         <Inset>
